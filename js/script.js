@@ -6,16 +6,16 @@ function init() {
 }
 
 const logoImagesArray = [
-  '../flowline/assets/download-0.png',
-  '../flowline/assets/download-1.png',
-  '../flowline/assets/download-2.png',
-  '../flowline/assets/download-3.png',
-  '../flowline/assets/download-4.png',
-  '../flowline/assets/download-5.png',
-  '../flowline/assets/download-6.png',
-  '../flowline/assets/download-7.png',
-  '../flowline/assets/download-8.png',
-  '../flowline/assets/download-9.png'
+  '/assets/download-0.png',
+  '/assets/download-1.png',
+  '/assets/download-2.png',
+  '/assets/download-3.png',
+  '/assets/download-4.png',
+  '/assets/download-5.png',
+  '/assets/download-6.png',
+  '/assets/download-7.png',
+  '/assets/download-8.png',
+  '/assets/download-9.png'
 ];
 
 function pageTransition() {

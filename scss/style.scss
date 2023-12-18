@@ -30,6 +30,9 @@ $brown: #9a7c63;
 $gray: #858585;
 $blue: #adcae4;
 
+// $imageSrc: '/assets';
+$imageSrc: '/flowline/assets';
+
 $devices: (
   phone: 480px,
   mobile: 767px,
@@ -249,7 +252,7 @@ button {
   }
   &--black {
     #logo {
-      background-image: url('/flowline/assets/logo--black.svg');
+      background-image: url('#{$imageSrc}/logo--black.svg');
     }
     #{$header}-button__burger {
       background-color: $black;
@@ -330,7 +333,7 @@ button {
 }
 
 #logo {
-  background: url('/flowline/assets/logo.svg') no-repeat;
+  background: url('#{$imageSrc}/logo.svg') no-repeat;
   display: inline-block;
   height: 2.5rem;
   width: 18rem;
@@ -406,21 +409,21 @@ button {
   margin: 0 -7.2rem;
   z-index: -1;
   height: 88rem;
-  background: #000 url('/flowline/assets/header_bg1.png') no-repeat center
-    bottom / cover;
+  background: #000 url('#{$imageSrc}/header_bg1.png') no-repeat center bottom /
+    cover;
   display: none;
   transition: all ease 0.3s;
   &-1 {
     background-color: #000;
-    background-image: url('/flowline/assets/header_bg1.png');
+    background-image: url('#{$imageSrc}/header_bg1.png');
   }
   &-2 {
     background-color: #fff;
-    background-image: url('/flowline/assets/header_bg2.png');
+    background-image: url('#{$imageSrc}/header_bg2.png');
   }
   &-3 {
     background-color: #000;
-    background-image: url('/flowline/assets/header_bg3.png');
+    background-image: url('#{$imageSrc}/header_bg3.png');
   }
 }
 
@@ -578,7 +581,7 @@ button {
     }
   }
   &__arrow {
-    background: url('/flowline/assets/home_arrow.svg') right no-repeat;
+    background: url('#{$imageSrc}/home_arrow.svg') right no-repeat;
     display: inline-flex;
     align-items: center;
     padding-right: 0.4rem;
@@ -602,6 +605,7 @@ button {
     font-size: 31.2rem;
     font-weight: 700;
     line-height: 28.1rem;
+    margin-left: -1.1rem;
   }
   &__sm {
     position: absolute;
@@ -617,19 +621,23 @@ button {
       text-indent: -9999px;
       width: 16.9rem;
       height: 4rem;
-      background: url('/flowline/assets/home_portfolio-text.png') no-repeat;
+      background: url('#{$imageSrc}/home_portfolio-text.png') no-repeat;
       top: 37.6rem;
       right: 37.3rem;
     }
   }
 
   &__carousel {
-    margin-right: -7.2rem;
+    margin: 0 -7.2rem;
+
     position: relative;
     .swiper {
       height: 98rem;
     }
     .swiper-slide {
+      &:first-child {
+        margin-left: 7.2rem;
+      }
       font-size: 1.8rem;
       display: flex;
       justify-content: center;
@@ -702,7 +710,7 @@ button {
       height: 8rem;
       &::after {
         content: '';
-        background: url('/flowline/assets/icon_prev.svg') no-repeat;
+        background: url('#{$imageSrc}/icon_prev.svg') no-repeat;
         display: inline-block;
         width: 8rem;
         height: 8rem;
@@ -714,7 +722,7 @@ button {
       height: 8rem;
       &::after {
         content: '';
-        background: url('/flowline/assets/icon_prev.svg') no-repeat;
+        background: url('#{$imageSrc}/icon_prev.svg') no-repeat;
         display: inline-block;
         width: 8rem;
         height: 8rem;
@@ -726,12 +734,12 @@ button {
 .about_us {
   position: relative;
   color: $brown;
-  background: $white url('/flowline/assets/home_bg4.svg') no-repeat bottom left;
-  transition: background 1.05s cubic-bezier(0.19, 1, 0.22, 1);
+  background: $white url('#{$imageSrc}/home_bg4.svg') no-repeat bottom left;
+  transition: all 1.05s cubic-bezier(0.19, 1, 0.22, 1);
   &.brown {
     color: $white;
-    background: $brown url('/flowline/assets/home_bg4-brown.svg') no-repeat
-      bottom left;
+    background: $brown url('#{$imageSrc}/home_bg4-brown.svg') no-repeat bottom
+      left;
 
     .about_us__title::before,
     .about_us__title::after {
@@ -741,8 +749,8 @@ button {
   &.black {
     color: $white;
     background-color: $black;
-    background: $black url('/flowline/assets/home_bg4-black.svg') no-repeat
-      bottom left;
+    background: $black url('#{$imageSrc}/home_bg4-black.svg') no-repeat bottom
+      left;
 
     .about_us__title::before,
     .about_us__title::after {
@@ -766,7 +774,7 @@ button {
     width: 46.5rem;
     height: 22rem;
     right: 0;
-    background: url('/flowline/assets/home_bg5.svg');
+    background: url('#{$imageSrc}/home_bg5.svg');
   }
 
   &__title {
@@ -847,7 +855,7 @@ button {
 }
 
 .flowline__bg {
-  background: $black url('/flowline/assets/bg_typo_extra_fixed.png') center
+  background: $black url('#{$imageSrc}/bg_typo_extra_fixed.png') center
     no-repeat;
   height: 55.8rem;
   background-attachment: fixed;
@@ -859,7 +867,7 @@ button {
   &.white {
     background-color: $white;
     .footer__contact_link::after {
-      background-image: url('/flowline/assets/icon_cursor-white.svg');
+      background-image: url('#{$imageSrc}/icon_cursor-white.svg');
     }
     .say_hi {
       color: $white;
@@ -868,7 +876,7 @@ button {
   &.blue {
     background-color: $blue;
     .footer__contact_link::after {
-      background-image: url('/flowline/assets/icon_cursor-blue.svg');
+      background-image: url('#{$imageSrc}/icon_cursor-blue.svg');
     }
     .say_hi {
       color: $white;
@@ -877,8 +885,11 @@ button {
   &.black {
     color: $black;
     background-color: $white;
+    a {
+      color: $black;
+    }
     .footer__contact_link::after {
-      background-image: url('/flowline/assets/icon_cursor-black.svg');
+      background-image: url('#{$imageSrc}/icon_cursor-black.svg');
     }
     .say_hi {
       color: $white;
@@ -939,7 +950,7 @@ button {
       display: inline-block;
       width: 4.8rem;
       height: 4.8rem;
-      background: url('/flowline/assets/footer__cursor.svg') no-repeat;
+      background: url('#{$imageSrc}/footer__cursor.svg') no-repeat;
       position: absolute;
       right: -2.2rem;
       top: 2.9rem;
@@ -1535,7 +1546,7 @@ button {
     display: inline-block;
     width: 3rem;
     height: 3rem;
-    background: url('/flowline/assets/contact_arrow_next.svg') center no-repeat;
+    background: url('#{$imageSrc}/contact_arrow_next.svg') center no-repeat;
     margin-left: 0.8rem;
   }
   &-swiper__button-prev::before {
@@ -1543,7 +1554,7 @@ button {
     display: inline-block;
     width: 3rem;
     height: 3rem;
-    background: url('/flowline/assets/contact_arrow_next.svg') center no-repeat;
+    background: url('#{$imageSrc}/contact_arrow_next.svg') center no-repeat;
     margin-right: 0.8rem;
     transform: rotate(-180deg);
   }
@@ -1566,7 +1577,7 @@ button {
       width: 4rem;
       height: 4rem;
       margin-right: 0.4rem;
-      background: url('/flowline/assets/icon_send.svg') center no-repeat;
+      background: url('#{$imageSrc}/icon_send.svg') center no-repeat;
     }
   }
 
@@ -1703,7 +1714,7 @@ button {
         -webkit-appearance: none;
         width: 2.4rem;
         height: 2.4rem;
-        background: url('/flowline/assets/icon_check.svg');
+        background: url('#{$imageSrc}/icon_check.svg');
         display: inline-block;
         position: relative;
         vertical-align: middle;
@@ -1713,7 +1724,7 @@ button {
       }
 
       input:checked + label::before {
-        background: url('/flowline/assets/icon_check--checked.svg');
+        background: url('#{$imageSrc}/icon_check--checked.svg');
       }
     }
 
@@ -1761,7 +1772,7 @@ button {
           display: inline-block;
           width: 1.4rem;
           height: 1.4rem;
-          background: url('/flowline/assets/icon_upload.svg') no-repeat;
+          background: url('#{$imageSrc}/icon_upload.svg') no-repeat;
           margin-right: 0.2rem;
         }
 
@@ -1770,7 +1781,7 @@ button {
           background-color: $blue;
           color: $black;
           &::before {
-            background-image: url('/flowline/assets/icon_upload--black.svg');
+            background-image: url('#{$imageSrc}/icon_upload--black.svg');
           }
         }
       }
@@ -1797,7 +1808,7 @@ button {
         margin-left: 0.5rem;
         height: 1.4rem;
         width: 1.4rem;
-        background: url('/flowline/assets/icon_delete.svg') center no-repeat;
+        background: url('#{$imageSrc}/icon_delete.svg') center no-repeat;
       }
     }
 

@@ -427,12 +427,10 @@ function mainPage() {
     '.typography__item',
     0.4,
     {
-      ease: 'power3.out',
       opacity: 0,
       webkitFilter: 'blur(8px)'
     },
     {
-      ease: 'power3.out',
       opacity: 1,
       webkitFilter: 'blur(0px)'
     },

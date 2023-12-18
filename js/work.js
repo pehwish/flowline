@@ -6,7 +6,7 @@ const works = [
     date: '2023.11',
     desc1: `국회는 의원의 자격을 심사하며, 의원을 징계할 수 있다. 언론·출판은 타인의 명예나 권리 또는 공중도덕이나 사회윤리를 침해하여서는 아니된다.`,
     desc2: `The National Assembly shall examine the qualifications of members and may discipline them. The press or publication shall not infringe on the honor or rights of others, or public morality or social ethics.`,
-    images: ['/assets/@work1.png']
+    images: ['/flowline/assets/@work1.png']
   },
   {
     type: ['app'],
@@ -15,7 +15,7 @@ const works = [
     date: '2023.11-2023.12',
     desc1: `헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다.`,
     desc2: `The head of the Constitutional Court is appointed by the President from among the judges with the consent of the National Assembly.`,
-    images: ['/assets/@work2.png']
+    images: ['/flowline/assets/@work2.png']
   },
   {
     type: ['e-commerce', 'system'],
@@ -24,7 +24,7 @@ const works = [
     date: '2023.11',
     desc1: `정당의 설립은 자유이며, 복수정당제는 보장된다. 국가는 노인과 청소년의 복지향상을 위한 정책을 실시할 의무를 진다.`,
     desc2: `The establishment of a political party is free, and a multiparty system is guaranteed. The state is obligated o implement policies to improve the welfare of the elderly and adolescents.`,
-    images: ['/assets/@work3.png']
+    images: ['/flowline/assets/@work3.png']
   },
   {
     type: ['e-commerce', 'system'],
@@ -33,7 +33,7 @@ const works = [
     date: '2023.11- In progress',
     desc1: `정당의 설립은 자유이며, 복수정당제는 보장된다. 국가는 노인과 청소년의 복지향상을 위한 정책을 실시할 의무를 진다.`,
     desc2: `The establishment of a political party is free, and a multiparty system is guaranteed. The state is obligated o implement policies to improve the welfare of the elderly and adolescents.`,
-    images: ['/assets/@work4.png']
+    images: ['/flowline/assets/@work4.png']
   }
 ];
 

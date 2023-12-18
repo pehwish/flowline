@@ -5,106 +5,211 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowline</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js" defer type="module"></script>
   </head>
   <body>
     <div id="wrap">
-      <header>
-        <a href="javascript:void(0);">
-          <h1>FLOWLINE</h1>
-        </a>
-        <nav>
-          <a href="work.html"><span>Work</span></a>
-          <a href="about.html"><span>Aboutt</span></a>
-          <a href="contact.html"><span>Contact</span></a>
-        </nav>
+      <!-- header -->
+      <header class="header">
+        <div class="header__aligner">
+          <div class="header__align">
+            <a href="/" id="logo">
+              <h1>FLOWLINE</h1>
+            </a>
+
+            <button type="button" class="header-button__trigger">
+              <span class="header-button__burger header-button__burger--top"
+                >메뉴</span
+              ><span class="header-button__burger header-button__burger--middle"
+                >열기</span
+              ><span class="header-button__burger header-button__burger--bottom"
+                >닫기</span
+              >
+            </button>
+
+            <nav class="navigation">
+              <a href="work.html" class="navigation__link">
+                <span class="navigation__item">Work</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  With years of experience in the industry, we take pride in our
+                  journey so far. Over the years, we have successfully completed
+                  over 100 projects, each one leaving a mark in the digital
+                  landscape.
+                </div>
+              </a>
+              <a href="about.html" class="navigation__link">
+                <span class="navigation__item">About</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  We build brands, digital experiences and communities
+                  worldwide. With our unique approach through art, minimalism,
+                  quality, original thinking, we can show you the possibilities
+                  most people don’t see.
+                </div>
+              </a>
+              <a href="contact.html" class="navigation__link">
+                <span class="navigation__item">Contact</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  Serving global brands, founders, startups, VCs, and more. We
+                  craft new ideas and defining experiences to make our clients
+                  succeed.
+                </div>
+              </a>
+            </nav>
+            <div class="header_bg"></div>
+          </div>
+        </div>
       </header>
-      <main id="main">
-        <section class="seciton section--main">
-          <h2>WE JUST HAVE</h2>
-          <h2>ONE</h2>
-          <h2>PRINCIPLE</h2>
+      <!-- header -->
+      <main class="main" data-type="about">
+        <section class="seciton about">
+          <div class="section__inner">
+            <h2 class="about__heading-1">
+              We just<br />
+              have
+            </h2>
+            <h2 class="about__heading-2">one</h2>
+            <h2 class="about__heading-3">Principle</h2>
+          </div>
         </section>
-        <section>
-          <h3>
-            Unveiling the brand <br />
-            to the world<br />
-            with a touch of brilliance
-          </h3>
-          <p>본질에 한 조각의 반짝임을 담아 브랜드를 세상에 펼쳐보이다</p>
+        <section class="section typo">
+          <div class="section__inner">
+            <h3 class="typo__heading">
+              <span class="typo__heading-line"> Unveiling the brand</span>
+              <span class="typo__heading-line">to the world</span>
+              <span class="typo__heading-line">with a touch of brilliance</span>
+            </h3>
+            <p class="typo__description">
+              본질에 한 조각의 반짝임을 담아 브랜드를 세상에 펼쳐보이다
+            </p>
+          </div>
         </section>
-        <section>
-          <div class="text-container">
-            <ol>
-              <li>
-                <div class="text-element">
-                  <h4>
-                    Our starting point begins with the essence of the brand.
-                  </h4>
-                  <p>
-                    우리의 출발점은 브랜드의 본질에서 시작합니다.<br />장황함이
-                    아닌 간결함, 더하는 것이 아니라 덜어내는 것
-                  </p>
-                </div>
+        <section class="section principle">
+          <div class="section__inner">
+            <ol class="principle__list">
+              <li class="principle__item">
+                <h4 class="principle__heading">
+                  Our starting point begins with<br />
+                  the essence of the brand.
+                </h4>
+                <p class="principle__description">
+                  우리의 출발점은 브랜드의 본질에서 시작합니다.<br />장황함이
+                  아닌 간결함, 더하는 것이 아니라 덜어내는 것
+                </p>
               </li>
-              <li>
-                <div class="text-element">
-                  <h4>
-                    We add a touch of ingenuity to the pure canvas to make the
-                    brand shine.
-                  </h4>
-                  <p>
-                    순수함만 남은 바탕에 한 조각의 영민함을 더해 브랜드를 빛나게
-                    합니다.<br />
-                    사람들의 기억 속 한 자리에 머무르도록
-                  </p>
-                </div>
+              <li class="principle__item">
+                <h4 class="principle__heading">
+                  We add a touch of ingenuity <br />to the pure canvas to
+                  make<br />
+                  the brand shine.
+                </h4>
+                <p class="principle__description">
+                  순수함만 남은 바탕에 한 조각의 영민함을 더해 브랜드를 빛나게
+                  합니다.<br />
+                  사람들의 기억 속 한 자리에 머무르도록
+                </p>
               </li>
-              <li>
-                <div class="text-element">
-                  <h4>
-                    We accompany the brand's digital journey not as an agency,
-                    but as a partner.
-                  </h4>
-                  <p>
-                    우리는 에이전시가 아닌 파트너로서 브랜드의 디지털 여정을
-                    함께 합니다.<br />
-                    디지털 프로젝트의 시작과 끝 그리고 그 이상까지
-                  </p>
-                </div>
+              <li class="principle__item">
+                <h4 class="principle__heading">
+                  We accompany the brand's <br />digital journey not as an
+                  agency, <br />but as a partner.
+                </h4>
+                <p class="principle__description">
+                  우리는 에이전시가 아닌 파트너로서 브랜드의 디지털 여정을 함께
+                  합니다.<br />
+                  디지털 프로젝트의 시작과 끝 그리고 그 이상까지
+                </p>
               </li>
             </ol>
+            <div class="principle__images">
+              <div class="principle__images--align">
+                <img
+                  src="/assets/about_img01.png"
+                  alt=""
+                  class="principle__images-item01"
+                />
+                <img
+                  src="/assets/about_img02.png"
+                  alt=""
+                  class="principle__images-item02"
+                />
+                <img
+                  src="/assets/about_img03.png"
+                  alt=""
+                  class="principle__images-item03"
+                />
+              </div>
+            </div>
           </div>
-          <div class="sticky-image"></div>
         </section>
-        <section>
-          <h3>SO It’s the FLOWLINE</h3>
-
-          <h4>Don’t be a stranger.</h4>
-          <h4>Meet the decent one.</h4>
+        <section class="section so_its_the_flowline">
+          <div class="section__inner">
+            <h3 class="so_its_the_flowline__so so_its_the_flowline__item">
+              SO,
+            </h3>
+            <h4
+              class="so_its_the_flowline__flowline so_its_the_flowline__item gangitem"
+            >
+              flowline
+            </h4>
+          </div>
         </section>
       </main>
+      <footer class="footer white">
+        <div class="section__inner">
+          <div class="footer__align">
+            <div class="footer__left">
+              <div class="footer__contact_us">
+                <h5 class="footer__contact_us__heading">Contact us</h5>
+                <a
+                  href="mailto:hello@flowline.co.kr"
+                  class="footer__contact_us__mail"
+                  >hello@flowline.co.kr</a
+                >
+                <p class="footer__contact_us__address">
+                  529, Seolleung-ro, Gangnam-gu, Seoul
+                </p>
 
-      <footer>
-        <div class="footer-nav">
-          <a href="mailto:hello@flowline.co.kr"
-            ><span>hello@flowline.co.kr</span></a
-          >
-          <span>513 Seolleung-ro, Gangnam-gu, Seoul</span>
-          <a href="javascript:void(0);"><span>Instagram</span></a>
-          <a href="javascript:void(0);"><span>Blog</span></a>
-          <a href="javascript:void(0);"><span>Youtube</span></a>
-        </div>
-        <h3>FLOWLINE</h3>
-        <div class="footer-bottom">
-          <span>Privacy policy</span>
-          <span>© Flowline 2024</span><span>Terms & conditions</span>
+                <div class="footer__contact_us__sns-wrap">
+                  <a href="#none" class="footer__contact_us__sns">Instagram</a>
+                  <a href="#none" class="footer__contact_us__sns">Blog</a>
+                  <a href="#none" class="footer__contact_us__sns">Youtube</a>
+                </div>
+              </div>
+
+              <a href="contact.html" class="footer__contact_link"
+                >Meet the decent one.</a
+              >
+            </div>
+
+            <div class="footer__right">
+              <a href="#none" class="say_hi">Say hi</a>
+              <h4 class="footer__right__heading">
+                Don’t be a stranger.<br />
+                Let’s make<br />
+                something great.
+              </h4>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <span class="footer__copyright__text">© Flowline 2024</span>
+            <a href="#none" class="footer__copyright__policy"
+              ><em>Privacy policy</em></a
+            >
+            <a href="#none" class="footer__copyright__policy"
+              >Terms & conditions</a
+            >
+          </div>
         </div>
       </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="./js/script.js"></script>
   </body>
 </html>

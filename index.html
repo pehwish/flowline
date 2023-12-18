@@ -5,173 +5,341 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowline</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="./js/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js" defer type="module"></script>
   </head>
   <body>
     <div id="wrap">
-      <header>
-        <a href="javascript:void(0);">
-          <h1>FLOWLINE</h1>
-        </a>
-        <nav>
-          <a href="work.html"><span>Work</span></a>
-          <a href="about.html"><span>Aboutt</span></a>
-          <a href="contact.html"><span>Contact</span></a>
-        </nav>
+      <!-- header -->
+      <header class="header">
+        <div class="header__aligner">
+          <div class="header__align">
+            <a href="/" id="logo">
+              <h1>FLOWLINE</h1>
+            </a>
+
+            <button type="button" class="header-button__trigger">
+              <span class="header-button__burger header-button__burger--top"
+                >메뉴</span
+              ><span class="header-button__burger header-button__burger--middle"
+                >열기</span
+              ><span class="header-button__burger header-button__burger--bottom"
+                >닫기</span
+              >
+            </button>
+
+            <nav class="navigation">
+              <a href="work.html" class="navigation__link">
+                <span class="navigation__item">Work</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  With years of experience in the industry, we take pride in our
+                  journey so far. Over the years, we have successfully completed
+                  over 100 projects, each one leaving a mark in the digital
+                  landscape.
+                </div>
+              </a>
+              <a href="about.html" class="navigation__link">
+                <span class="navigation__item">About</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  We build brands, digital experiences and communities
+                  worldwide. With our unique approach through art, minimalism,
+                  quality, original thinking, we can show you the possibilities
+                  most people don’t see.
+                </div>
+              </a>
+              <a href="contact.html" class="navigation__link">
+                <span class="navigation__item">Contact</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  Serving global brands, founders, startups, VCs, and more. We
+                  craft new ideas and defining experiences to make our clients
+                  succeed.
+                </div>
+              </a>
+            </nav>
+            <div class="header_bg"></div>
+          </div>
+        </div>
       </header>
-      <main id="main">
-        <section class="intro">
-          <div class="intro__content">
-            <div class="intro__frame">
-              <div class="intro__cover"></div>
+      <!-- header -->
+
+      <main class="main" data-type="main">
+        <section class="section info">
+          <div class="section__inner section__inner--info">
+            <ul class="tit__wrap">
+              <li class="tit__item">본질에 한 조각의 반짝임을 담아</li>
+              <li class="tit__item">브랜드를 세상에 펼쳐보이다</li>
+              <li class="tit__item antic_didone">
+                WITH A TOUCH OF <br />
+                BRILLIRANCE
+              </li>
+            </ul>
+
+            <div class="typography__wrap">
+              <div class="typography__item typography1">UNVEILING</div>
+              <div class="typography__item typography2">THE</div>
+              <div class="typography__item typography3">BRAND</div>
+              <div class="typography__item typography4">TO THE</div>
+              <div class="typography__item typography5">WORLD</div>
             </div>
-            <!-- <div class="intro__video-container">
-              <video
-                id="8675bfc7-73ab-7388-913b-50b8562ce588-video"
-                autoplay=""
-                loop=""
-                muted=""
-                playsinline=""
-                data-wf-ignore="true"
-                data-object-fit="cover"
-                class="intro__video"
-              >
-                <source
-                  src="https://assets-global.website-files.com/63ec206c5542613e2e5aa784/64028085a5c56c5d0a1136fd_Home BG-transcode.mp4"
-                  data-wf-ignore="true"
-                />
-                <source
-                  src="https://assets-global.website-files.com/63ec206c5542613e2e5aa784/64028085a5c56c5d0a1136fd_Home BG-transcode.webm"
-                  data-wf-ignore="true"
-                />
-              </video>
-            </div> -->
-            <div class="text-container text-main">
-              <h2 class="text-main__heading heading01">UNVEILING THE BRAND</h2>
-              <h2 class="text-main__heading heading02">TO THE WORLD</h2>
-              <h2
-                class="text-main__heading text-main__heading--right heading03"
-              >
-                WITH A TOUCH OF BRILLIRANCE
-                <p class="text-main__paragraph">
-                  본질에 한 조각의 반짝임을 담아 브랜드를 세상에 펼쳐보이다
+          </div>
+        </section>
+        <section class="section what_we_do">
+          <div class="section__inner">
+            <div class="what_we_do__aligner">
+              <div class="what_we_do__list-wrap">
+                <h2 class="what_we_do__title">What we do</h2>
+                <ul class="what_we_do__list">
+                  <li class="what_we_do__item">Digital Products & Platforms</li>
+                  <li class="what_we_do__item">Web/App</li>
+                  <li class="what_we_do__item">E-Commerce</li>
+                  <li class="what_we_do__item">System Integration</li>
+                  <li class="what_we_do__item">Performance Marketing</li>
+                  <li class="what_we_do__item">Data Analysis</li>
+                  <li class="what_we_do__item">Growth Hacking</li>
+                </ul>
+              </div>
+              <div class="what_we_do__images-wrap">
+                <div class="what_we_do__images">
+                  <div class="what_we_do__image">
+                    <img src="/assets/home_image01.png" alt="" />
+                  </div>
+                  <div class="what_we_do__image what_we_do__image02">
+                    <img src="/assets/home_image02.png" alt="" />
+                  </div>
+                </div>
+                <div class="what_we_do__link-area">
+                  <a href="work.html" class="what_we_do__link">
+                    <em class="what_we_do__works">Works</em>
+                    <div class="what_we_do__align">
+                      <span class="what_we_do__detail">View all projects</span>
+
+                      <div class="what_we_do__arrow">
+                        <span class="what_we_do__arrow-line"></span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section portfolio">
+          <div class="section__inner">
+            <h3 class="portfolio__title">
+              Our<br />
+              Digital
+            </h3>
+
+            <span class="portfolio__sm portfolio__sm-tit01">
+              experiences.
+            </span>
+            <span class="portfolio__sm portfolio__sm-tit02"> (Portfolio) </span>
+
+            <div class="portfolio__carousel">
+              <div class="portfolio__carousel__arrows">
+                <button type="button" class="swiper-button-prev"></button>
+                <button type="button" class="swiper-button-next"></button>
+              </div>
+
+              <div class="swiper portfolio-swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- 반복영역 -->
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+
+                      <img src="/assets/@project01.png" alt="" />
+                    </div>
+                  </a>
+                  <!--// 반복영역 -->
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+                      <img src="/assets/@project02.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+                      <img src="/assets/@project01.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+
+                      <img src="/assets/@project01.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+                      <img src="/assets/@project02.png" alt="" />
+                    </div>
+                  </a>
+                  <a href="#none" class="swiper-slide">
+                    <div class="portfolio-slide">
+                      <div class="portfolio-slide__info">
+                        <h4 class="portfolio-slide__title">Portfolio name</h4>
+                        <h5 class="portfolio-slide__desc">
+                          Portfolio description
+                        </h5>
+                      </div>
+                      <img src="/assets/@project01.png" alt="" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section about_us">
+          <div class="section__inner">
+            <h3 class="about_us__title"><em>About us</em></h3>
+
+            <h4 class="about_us__heading maginia">
+              Our starting point begins<br />
+              with the essence of the brand
+            </h4>
+            <p class="about_us__desc">
+              우리의 출발점은 브랜드의 본질에서 시작합니다.<br />
+              장황함이 아닌 간결함, 더하는 것이 아니라 덜어내는 것
+            </p>
+
+            <div class="about_us__test-align">
+              <div class="about_us__text-wrap about_us__text01">
+                <h5 class="about_us__text-wrap__heading">
+                  We add a touch of ingenuity to the pure canvas to make the
+                  brand shine.
+                </h5>
+                <p class="about_us__text-wrap__desc">
+                  순수함만 남은 바탕에 한 조각의 영민함을 더해 브랜드를 빛나게
+                  합니다. 사람들의 기억 속 한 자리에 머무르도록.
                 </p>
-              </h2>
+              </div>
+              <div class="about_us__text-wrap about_us__text02">
+                <h5 class="about_us__text-wrap__heading">
+                  We accompany the brand's digital journey not as an agency, but
+                  as a partner.
+                </h5>
+                <p class="about_us__text-wrap__desc">
+                  우리는 에이전시가 아닌 파트너로서 브랜드의 디지털 여정을 함께
+                  합니다. 디지털 프로젝트의 시작과 끝, 그리고 그 이상까지
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section class="seciton section--what-we-do endtrigger">
-          <h3 class="section__heading3">What we do</h3>
-          <ul>
-            <li>Digital Products & Platforms</li>
-            <li>Websites</li>
-            <li>Apps</li>
-            <li>E-Commerce</li>
-            <li>System</li>
-          </ul>
-
-          <div class="widget">
-            <a href="work.html" class="widget__link">
-              <strong class="widget__title">Work</strong>
-              <span class="widget__description">View all projects</span>
-            </a>
-          </div>
-        </section>
-        <section class="seciton section--digital-experiences">
-          <h3 class="section__heading3">Digital experiences</h3>
-          <div class="slider">slider 영역</div>
-        </section>
-        <section class="seciton section--about-us endtrigger">
-          <h3 class="section__heading3">About us</h3>
-          <dl class="text-container">
-            <div class="text-element">
-              <dt class="text-element__heading">
-                Our starting point begins with the essence of the brand.
-              </dt>
-              <dd class="text-element__description">
-                우리의 출발점은 브랜드의 본질에서 시작합니다.<br />장황함이 아닌
-                간결함, 더하는 것이 아니라 덜어내는 것
-              </dd>
-            </div>
-            <div class="text-element">
-              <dt class="text-element__heading">
-                We add a touch of ingenuity to the pure canvas to make the brand
-                shine.
-              </dt>
-              <dd class="text-element__description">
-                순수함만 남은 바탕에 한 조각의 영민함을 더해 브랜드를 빛나게
-                합니다.<br />
-                사람들의 기억 속 한 자리에 머무르도록
-              </dd>
-            </div>
-            <div class="text-element">
-              <dt class="text-element__heading">
-                We accompany the brand's digital journey not as an agency, but
-                as a partner.
-              </dt>
-              <dd class="text-element__description">
-                우리는 에이전시가 아닌 파트너로서 브랜드의 디지털 여정을 함께
-                합니다.<br />
-                디지털 프로젝트의 시작과 끝 그리고 그 이상까지
-              </dd>
-            </div>
-          </dl>
-
-          <div class="widget">
-            <a href="about.html" class="widget__link">
-              <strong class="widget__title">About</strong>
-              <span class="widget__description">Get to know us better</span>
-            </a>
-          </div>
-        </section>
-        <section class="seciton section--contact-us endtrigger">
-          <h3 class="section__heading3">Contact us</h3>
-
-          <div class="text-container">
-            <h4>Don’t be a stranger.</h4>
-            <h4>Let’s make</h4>
-            <h4>something great.</h4>
-          </div>
-
-          <div class="widget">
-            <a href="contact.html" class="widget__link">
-              <strong class="widget__title">Contact</strong>
-              <span class="widget__description">Meet the decent one</span>
-            </a>
           </div>
         </section>
       </main>
+      <div class="flowline__bg"></div>
+      <footer class="footer">
+        <div class="section__inner">
+          <div class="footer__align">
+            <div class="footer__left">
+              <div class="footer__contact_us">
+                <h5 class="footer__contact_us__heading">Contact us</h5>
+                <a
+                  href="mailto:hello@flowline.co.kr"
+                  class="footer__contact_us__mail"
+                  >hello@flowline.co.kr</a
+                >
+                <p class="footer__contact_us__address">
+                  529, Seolleung-ro, Gangnam-gu, Seoul
+                </p>
 
-      <footer>
-        <div class="footer__nav">
-          <a href="mailto:hello@flowline.co.kr"
-            ><span>hello@flowline.co.kr</span></a
-          >
-          <span>513 Seolleung-ro, Gangnam-gu, Seoul</span>
-          <a href="javascript:void(0);"><span>Instagram</span></a>
-          <a href="javascript:void(0);"><span>Blog</span></a>
-          <a href="javascript:void(0);"><span>Youtube</span></a>
-        </div>
-        <div class="footer__flowline">
-          <span class="footer__flowline--item">F</span>
-          <span class="footer__flowline--item">L</span>
-          <span class="footer__flowline--item">O</span>
-          <span class="footer__flowline--item">W</span>
-          <span class="footer__flowline--item">L</span>
-          <span class="footer__flowline--item">I</span>
-          <span class="footer__flowline--item">N</span>
-          <span class="footer__flowline--item">E</span>
-        </div>
-        <div class="footer__bottom">
-          <span>Privacy policy</span>
-          <span>© Flowline 2024</span><span>Terms & conditions</span>
+                <div class="footer__contact_us__sns-wrap">
+                  <a href="#none" class="footer__contact_us__sns">Instagram</a>
+                  <a href="#none" class="footer__contact_us__sns">Blog</a>
+                  <a href="#none" class="footer__contact_us__sns">Youtube</a>
+                </div>
+              </div>
+
+              <a href="contact.html" class="footer__contact_link"
+                >Meet the decent one.</a
+              >
+            </div>
+
+            <div class="footer__right">
+              <a href="#none" class="say_hi">Say hi</a>
+              <h4 class="footer__right__heading">
+                Don’t be a stranger.<br />
+                Let’s make<br />
+                something great.
+              </h4>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <span class="footer__copyright__text">© Flowline 2024</span>
+            <a href="#none" class="footer__copyright__policy"
+              ><em>Privacy policy</em></a
+            >
+            <a href="#none" class="footer__copyright__policy"
+              >Terms & conditions</a
+            >
+          </div>
         </div>
       </footer>
+    </div>
+
+    <div class="page-transition">
+      <div class="page-transition__bg">
+        <img src="/assets/page-transition__bg.png" alt="" />
+      </div>
+      <div class="page-transition__text-wrap">
+        <div class="page-transition__text01 page-transition__text-item">
+          <span class="page-transition__text-black">확신을 위한 선택</span>
+          <span class="page-transition__text-white">확신을 위한 선택</span>
+          <span class="page-transition__text-overlay">확신을 위한 선택</span>
+        </div>
+
+        <div class="page-transition__text02 page-transition__text-item">
+          <span class="page-transition__text-black"
+            >a choice for certainty</span
+          >
+          <span class="page-transition__text-white"
+            >a choice for certainty</span
+          >
+          <span class="page-transition__text-overlay"
+            >a choice for certainty</span
+          >
+        </div>
+      </div>
+
+      <div class="page-transition__flowline">Flowline</div>
     </div>
   </body>
 </html>

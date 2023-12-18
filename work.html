@@ -5,47 +5,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowline</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js" defer type="module"></script>
   </head>
   <body>
     <div id="wrap">
-      <header>
-        <a href="javascript:void(0);">
-          <h1>FLOWLINE</h1>
-        </a>
-        <nav>
-          <a href="work.html"><span>Work</span></a>
-          <a href="about.html"><span>Aboutt</span></a>
-          <a href="contact.html"><span>Contact</span></a>
-        </nav>
+      <!-- header -->
+      <header class="header">
+        <div class="header__aligner">
+          <div class="header__align">
+            <a href="/" id="logo">
+              <h1>FLOWLINE</h1>
+            </a>
+
+            <button type="button" class="header-button__trigger">
+              <span class="header-button__burger header-button__burger--top"
+                >메뉴</span
+              ><span class="header-button__burger header-button__burger--middle"
+                >열기</span
+              ><span class="header-button__burger header-button__burger--bottom"
+                >닫기</span
+              >
+            </button>
+
+            <nav class="navigation">
+              <a href="work.html" class="navigation__link">
+                <span class="navigation__item">Work</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  With years of experience in the industry, we take pride in our
+                  journey so far. Over the years, we have successfully completed
+                  over 100 projects, each one leaving a mark in the digital
+                  landscape.
+                </div>
+              </a>
+              <a href="about.html" class="navigation__link">
+                <span class="navigation__item">About</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  We build brands, digital experiences and communities
+                  worldwide. With our unique approach through art, minimalism,
+                  quality, original thinking, we can show you the possibilities
+                  most people don’t see.
+                </div>
+              </a>
+              <a href="contact.html" class="navigation__link">
+                <span class="navigation__item">Contact</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  Serving global brands, founders, startups, VCs, and more. We
+                  craft new ideas and defining experiences to make our clients
+                  succeed.
+                </div>
+              </a>
+            </nav>
+            <div class="header_bg"></div>
+          </div>
+        </div>
       </header>
-      <main id="main">
-        <section class="seciton section--main">
-          <h2>GREAT WORK SPEAKS</h2>
-          <h2>LOUDER THAN WORDS</h2>
+      <!-- header -->
+      <main class="main" data-type="work">
+        <section class="seciton work">
+          <div class="seciton__inner">
+            <!-- Swiper -->
+            <div class="swiper work-swiper" id="workSwiper">
+              <div class="swiper-wrapper"></div>
+            </div>
+            <div class="work__nav">
+              <button
+                type="button"
+                class="work__nav-button work__nav-button--active"
+                data-filter=""
+              >
+                All
+              </button>
+              <button type="button" class="work__nav-button" data-filter="web">
+                Web
+              </button>
+              <button type="button" class="work__nav-button" data-filter="app">
+                App
+                <span class="is-ready">곧 프로젝트가 추가될 예정입니다 💫</span>
+              </button>
+              <button
+                type="button"
+                class="work__nav-button"
+                data-filter="e-commerce"
+              >
+                E-Commerce
+              </button>
+              <button
+                type="button"
+                class="work__nav-button"
+                data-filter="system"
+              >
+                System Integration
+              </button>
+            </div>
+          </div>
         </section>
       </main>
-
-      <footer>
-        <div class="footer-nav">
-          <a href="mailto:hello@flowline.co.kr"
-            ><span>hello@flowline.co.kr</span></a
-          >
-          <span>513 Seolleung-ro, Gangnam-gu, Seoul</span>
-          <a href="javascript:void(0);"><span>Instagram</span></a>
-          <a href="javascript:void(0);"><span>Blog</span></a>
-          <a href="javascript:void(0);"><span>Youtube</span></a>
-        </div>
-        <h3>FLOWLINE</h3>
-        <div class="footer-bottom">
-          <span>Privacy policy</span>
-          <span>© Flowline 2024</span><span>Terms & conditions</span>
-        </div>
-      </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="./js/script.js"></script>
   </body>
 </html>

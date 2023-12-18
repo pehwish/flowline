@@ -5,155 +5,323 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowline</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/script.js" defer type="module"></script>
   </head>
   <body>
     <div id="wrap">
-      <header>
-        <a href="javascript:void(0);">
-          <h1>FLOWLINE</h1>
-        </a>
-        <nav>
-          <a href="work.html"><span>Work</span></a>
-          <a href="about.html"><span>Aboutt</span></a>
-          <a href="contact.html"><span>Contact</span></a>
-        </nav>
-      </header>
-      <main id="main">
-        <section class="seciton section--contact">
-          <div>
-            <h2>
-              LET’S MAKE <br />
-              SOMETHING <br />
-              GREAT
-            </h2>
-            <div>
-              <div><span>EMAIL</span> <span>hello@flowline.co.kr</span></div>
-              <div><span>TEL</span> <span>02.0000.0000</span></div>
-              <div>
-                <span>OFFICE</span> <span>서울특별시 강남구 선릉로 513</span>
-              </div>
-            </div>
+      <!-- header -->
+      <header class="header">
+        <div class="header__aligner">
+          <div class="header__align">
+            <a href="/" id="logo">
+              <h1>FLOWLINE</h1>
+            </a>
+
+            <button type="button" class="header-button__trigger">
+              <span class="header-button__burger header-button__burger--top"
+                >메뉴</span
+              ><span class="header-button__burger header-button__burger--middle"
+                >열기</span
+              ><span class="header-button__burger header-button__burger--bottom"
+                >닫기</span
+              >
+            </button>
+
+            <nav class="navigation">
+              <a href="work.html" class="navigation__link">
+                <span class="navigation__item">Work</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  With years of experience in the industry, we take pride in our
+                  journey so far. Over the years, we have successfully completed
+                  over 100 projects, each one leaving a mark in the digital
+                  landscape.
+                </div>
+              </a>
+              <a href="about.html" class="navigation__link">
+                <span class="navigation__item">About</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  We build brands, digital experiences and communities
+                  worldwide. With our unique approach through art, minimalism,
+                  quality, original thinking, we can show you the possibilities
+                  most people don’t see.
+                </div>
+              </a>
+              <a
+                href="contact.html"
+                class="navigation__link navigation__link--active"
+              >
+                <span class="navigation__item">Contact</span>
+                <div class="navigation__text plus_jakarta_sans">
+                  Serving global brands, founders, startups, VCs, and more. We
+                  craft new ideas and defining experiences to make our clients
+                  succeed.
+                </div>
+              </a>
+            </nav>
+            <div class="header_bg"></div>
           </div>
-          <div>
-            <form action="">
-              <div class="step-01">
-                <span>1/5</span>
-                <h3>어떤 프로젝트를 문의하고 싶으신가요?</h3>
+        </div>
+      </header>
+      <!-- header -->
+      <main class="main" data-type="contact">
+        <section class="seciton contact">
+          <div class="section__inner">
+            <div class="contact__aligner">
+              <div class="contact__left">
+                <h2 class="contact__heading">
+                  Let’s make<br />
+                  Something great.
+                </h2>
 
-                <div class="button-container">
-                  <button>웹사이트</button>
-                  <button>모바일 앱</button>
-                  <button>e 커머스 플랫폼</button>
-                  <button>퍼포먼스 마케팅</button>
-                  <button>시스템</button>
-                  <button>기타</button>
-                </div>
-              </div>
-              <div class="step-02">
-                <span>2/5</span>
-                <h3>프로젝트 유형이 무엇인가요?</h3>
-
-                <div class="button-container">
-                  <button>컨설팅</button>
-                  <button>신규 구축</button>
-                  <button>리뉴얼</button>
-                  <button>유지 보수</button>
-                  <button>시스템</button>
-                  <button>기타</button>
-                </div>
-              </div>
-              <div class="step-03">
-                <span>3/5</span>
-                <h3>생각하신 예산 범위는 어떻게 되나요?</h3>
-
-                <div class="button-container">
-                  <button>3천만원 미만</button>
-                  <button>3천만원 ~ 1억</button>
-                  <button>1억~2억</button>
-                  <button>2억~3억</button>
-                  <button>3억 이상</button>
-                </div>
-                <div class="control">
-                  <button class="prev">BACK</button>
-                  <button class="next">NEXT</button>
-                </div>
-              </div>
-              <div class="step-04">
-                <span>4/5</span>
-                <h3>연락받으실 담당자님에 대해 알려주세요.</h3>
-
-                <div class="form-row">
-                  <label for="">성함</label>
-                  <input type="text" />
-                </div>
-                <div class="form-row">
-                  <label for="">회사/기업</label>
-                  <input type="text" />
-                </div>
-                <div class="form-row">
-                  <label for="">이메일</label>
-                  <input type="text" />
-                </div>
-                <div class="form-row">
-                  <label for="">연락처</label>
-                  <input type="text" />
-                </div>
-                <div class="form-row">
-                  <label for="">부서(선택)</label>
-                  <input type="text" />
-                </div>
-                <div class="form-row">
-                  <label for="">직함(선택)</label>
-                  <input type="text" />
-                </div>
-              </div>
-              <div class="step-05">
-                <span>5/5</span>
-                <h3>프로젝트에 대해 자세히 알려주시면 더 좋아요.(선택)</h3>
-
-                <div class="textarea-container">
-                  <div class="textarea--inner">
-                    <textarea
-                      name=""
-                      id=""
-                      cols="30"
-                      rows="10"
-                      placeholder="레퍼런스 사이트, 프로젝트 목적, 웹사이트 방향성 등을 알려주시면 빠르게 상담을 도와드릴 수 있어요."
-                    ></textarea>
-                    <input type="file" />
+                <dl class="contact__info">
+                  <div class="contact__info-item">
+                    <dt class="contact__info-title">EMAIL</dt>
+                    <dd class="contact__info-desc">hello@flowline.co.kr</dd>
                   </div>
-                  <span>pdf, ppt, word, excel, jpg, png, zip 최대 10MB</span>
-                </div>
-                <div class="control">
-                  <button class="prev">BACK</button>
-                  <button class="next">NEXT</button>
-                </div>
-
-                <label for=""
-                  ><input type="checkbox" />
-                  <span>개인정보 수집 동의</span></label
-                >
+                  <div class="contact__info-item">
+                    <dt class="contact__info-title">TEL</dt>
+                    <dd class="contact__info-desc">02.0000.0000</dd>
+                  </div>
+                  <div class="contact__info-item">
+                    <dt class="contact__info-title">OFFICE</dt>
+                    <dd class="contact__info-desc">
+                      서울특별시 강남구 선릉로 529
+                    </dd>
+                  </div>
+                </dl>
               </div>
-            </form>
-            <div class="result">
-              <h3>
-                문의 주셔서 감사합니다.<br />
-                프로젝트 검토 후 빠르게 연락드리겠습니다:&#41;
-              </h3>
-            </div>
 
-            <div class="control">
-              <button class="prev">BACK</button>
-              <button class="next">NEXT</button>
+              <div class="contact__right">
+                <form onsubmit="handleSubmit">
+                  <div class="swiper contact-swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <span class="contact-swiper__step"
+                          ><em class="contact-swiper__current-step">1</em
+                          >/5</span
+                        >
+                        <h3 class="contact-swiper__heading">
+                          어떤 프로젝트를 문의하고 싶으신가요?
+                        </h3>
+
+                        <div class="contact-swiper__button-container">
+                          <button
+                            type="button"
+                            class="contact-swiper__button contact-swiper__button--active"
+                          >
+                            웹사이트
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            모바일 앱
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            e 커머스 플랫폼
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            퍼포먼스 마케팅
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            시스템
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            기타
+                          </button>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <span class="contact-swiper__step"
+                          ><em class="contact-swiper__current-step">2</em
+                          >/5</span
+                        >
+                        <h3 class="contact-swiper__heading">
+                          프로젝트 유형이 무엇인가요?
+                        </h3>
+                        <div class="contact-swiper__button-container">
+                          <button
+                            type="button"
+                            class="contact-swiper__button contact-swiper__button--active"
+                          >
+                            컨설팅
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            신규 구축
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            리뉴얼
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            유지 보수
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            기타
+                          </button>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <span class="contact-swiper__step"
+                          ><em class="contact-swiper__current-step">3</em
+                          >/5</span
+                        >
+                        <h3 class="contact-swiper__heading">
+                          생각하신 예산 범위는 어떻게 되나요?
+                        </h3>
+
+                        <div class="contact-swiper__button-container">
+                          <button
+                            type="button"
+                            class="contact-swiper__button contact-swiper__button--active"
+                          >
+                            3천만원 미만
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            3천만원 ~ 1억
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            1억~2억
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            2억~3억
+                          </button>
+                          <button type="button" class="contact-swiper__button">
+                            3억 이상
+                          </button>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <span class="contact-swiper__step">
+                          <em class="contact-swiper__current-step">4</em>/5
+                        </span>
+                        <h3 class="contact-swiper__heading">
+                          연락받으실 담당자님에 대해 알려주세요.
+                        </h3>
+
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >성함</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >회사/기업</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >이메일</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >연락처</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >부서(선택)</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                        <div class="contact-swiper__form-row">
+                          <label class="contact-swiper__label" for=""
+                            >직함(선택)</label
+                          >
+                          <input type="text" class="contact-swiper__input" />
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <span class="contact-swiper__step"
+                          ><em class="contact-swiper__current-step">5</em
+                          >/5</span
+                        >
+                        <h3 class="contact-swiper__heading">
+                          프로젝트에 대해 자세히 알려주시면 더 좋아요.(선택)
+                        </h3>
+                        <div class="textarea-container">
+                          <div class="textarea--inner">
+                            <textarea
+                              name=""
+                              id=""
+                              placeholder="레퍼런스 사이트, 프로젝트 목적, 웹사이트 방향성 등을 알려주시면 빠르게 상담을 도와드릴 수 있어요."
+                            ></textarea>
+                          </div>
+                        </div>
+                        <div class="contact-swiper__checked">
+                          <div class="form-group custom__checkbox-wrap">
+                            <input
+                              type="checkbox"
+                              id="private"
+                              class="custom__checkbox"
+                            />
+                            <label for="private" class="custom__checkbox-label"
+                              >개인정보 수집에 동의합니다.</label
+                            >
+                          </div>
+                          <div class="form-group file-form-group">
+                            <div class="custom__file-wrap">
+                              <input
+                                type="file"
+                                class="sm-input-file"
+                                id="js-file"
+                                accept=".pdf, .ppt, .word, .excel, .jpg, .png"
+                              />
+                              <label class="for-sm-input-file" for="js-file"
+                                >Upload</label
+                              >
+                              <div class="js-file-name"></div>
+                            </div>
+                            <span class="file-size__caution">
+                              최대 10MB | pdf, ppt, word, excel, jpg, png,
+                              zip</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="contact__control">
+                    <button type="button" class="contact-swiper__button-prev">
+                      <em>back</em>
+                    </button>
+                    <button type="button" class="contact-swiper__button-next">
+                      <em>next</em>
+                    </button>
+                    <button
+                      type="button"
+                      class="contact-swiper__button-request"
+                    >
+                      <em>Request</em>
+                    </button>
+                  </div>
+                </form>
+                <!-- //swiper -->
+
+                <div class="contact-finish-slide">
+                  <h4 class="contact-finish-slide__thx">Thank you!</h4>
+                  <h3 class="contact-finish-slide__title">
+                    문의 주셔서 감사합니다.
+                  </h3>
+                  <p class="contact-finish-slide__desc">
+                    프로젝트 검토 후 빠르게 연락드리겠습니다 🖐
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="./js/script.js"></script>
   </body>
 </html>

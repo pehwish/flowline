@@ -1,5 +1,18 @@
 import works from './work.js';
 
+const lenis = new Lenis();
+
+lenis.on('scroll', e => {
+  console.log(e);
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 function init() {
   gsap.registerPlugin(ScrollTrigger);
 

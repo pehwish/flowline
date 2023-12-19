@@ -30,7 +30,7 @@ $brown: #9a7c63;
 $gray: #858585;
 $blue: #adcae4;
 
-// $imageSrc: '/assets';
+//$imageSrc: '/assets';
 $imageSrc: '/flowline/assets';
 
 :root {
@@ -1678,6 +1678,57 @@ a {
     row-gap: 2rem;
     column-gap: 1.6rem;
     margin-top: 6.5rem;
+  }
+  .contact-radio-wrap {
+    display: inline-flex;
+    border: 1px solid $blue;
+    color: $blue;
+    border-radius: 1rem;
+    height: 7rem;
+    overflow: hidden;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    cursor: pointer;
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.3s var(--theme-transition-duration);
+
+    input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      &:checked ~ .contact-radio__check {
+        background-color: $blue;
+        color: $black;
+        font-weight: 700;
+      }
+    }
+    .contact-radio__check {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      color: $blue;
+      display: inline-flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    &:hover input ~ .contact-radio__check {
+      background-color: $blue;
+      color: $black;
+    }
   }
 
   &__button {

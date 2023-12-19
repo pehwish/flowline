@@ -311,19 +311,6 @@ function contactPage() {
   const requestBtn = document.querySelector('.contact-swiper__button-request');
   const finishSlide = document.querySelector('.contact-finish-slide');
 
-  const selectButtons = document.querySelectorAll('.contact-swiper__button');
-
-  // 버튼 선택
-  for (let item of selectButtons) {
-    item.addEventListener('click', function () {
-      let siblings = item.parentElement.children;
-      for (let sib of siblings) {
-        sib.classList.remove('contact-swiper__button--active');
-      }
-      item.classList.add('contact-swiper__button--active');
-    });
-  }
-
   //파일 업로드
   fileInput.addEventListener('change', function (e) {
     let name = e.target.files[0].name;

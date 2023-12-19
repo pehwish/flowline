@@ -1,6 +1,6 @@
 @import 'https://db.onlinewebfonts.com/c/0592f6e0b3f76f95980144203bec8b1f?family=FSP+DEMO+-+Articulat+CF+Heavy';
 @import 'https://use.typekit.net/ded1ugk.css';
-@import 'https://fonts.googleapis.com/css2?family=Antic+Didone&family=Plus+Jakarta+Sans:wght@400;800&&display=swap';
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&family=Plus+Jakarta+Sans:wght@400;800&display=swap');
 @import 'https://fonts.cdnfonts.com/css/maginia';
 @import 'https://fonts.cdnfonts.com/css/gangitem';
 @font-face {
@@ -30,8 +30,21 @@ $brown: #9a7c63;
 $gray: #858585;
 $blue: #adcae4;
 
-// $imageSrc: '/assets';
+// $imageSrc: '/flowline/assets';
 $imageSrc: '/flowline/assets';
+
+:root {
+  --br: 0.2rem;
+  --ease-out: cubic-bezier(0, 0.55, 0.45, 1);
+  --ease-in-out: cubic-bezier(0.85, 0, 0.15, 1);
+  --theme-transition-duration: 400ms;
+  --theme-transition-ease: ease-out;
+  --theme-transition: var(--theme-transition-duration)
+    var(--theme-transition-ease);
+  --theme-background-color: #151515;
+  --theme-text-color: #faf9f7;
+  --theme-convert-color: #faf9f7;
+}
 
 $devices: (
   phone: 480px,
@@ -56,7 +69,7 @@ $devices: (
   }
 }
 
-//Recommended CSS
+//lenis
 html.lenis {
   height: auto;
 }
@@ -90,8 +103,8 @@ body {
     BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-  color: $white;
-  background-color: $black;
+  background-color: var(--theme-background-color);
+  color: var(--theme-text-color);
 }
 .antic_didone {
   font-family: 'Antic Didone', serif;
@@ -108,6 +121,7 @@ body {
 div {
   box-sizing: border-box;
 }
+
 h1,
 h2,
 h3,
@@ -152,6 +166,14 @@ button {
   box-sizing: border-box;
 }
 
+input,
+textarea,
+button,
+a {
+  outline: none;
+}
+
+// page-transition
 .page-transition {
   align-items: center;
   background: #fff;
@@ -232,6 +254,7 @@ button {
   }
 }
 
+// header
 .header {
   $header: '.header';
 
@@ -241,7 +264,7 @@ button {
   right: 0;
   z-index: 1000;
   height: 8.4rem;
-  background-color: $black;
+  background-color: var(--theme-background-color);
   transition: all cubic-bezier(0, 0.55, 0.45, 1) 400ms;
   &__aligner {
     height: 100%;
@@ -288,15 +311,15 @@ button {
     }
   }
   &-button__trigger {
-    height: 1.7rem;
-    right: 2.3rem;
-    top: 2.3rem;
+    height: 4rem;
+    right: 0;
+    top: 2.2rem;
     position: absolute;
     width: 4rem;
     z-index: 1000;
   }
   &-button__burger {
-    background-color: $white;
+    background-color: var(--theme-convert-color);
     display: block;
     position: absolute;
     height: 1.2px;
@@ -351,6 +374,32 @@ button {
       display: block;
     }
   }
+
+  &_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0 -7.2rem;
+    z-index: -1;
+    height: 100vh;
+    background: #000 url('#{$imageSrc}/header_bg1.png') no-repeat center bottom /
+      cover;
+    display: none;
+    transition: all ease 0.3s;
+    &-1 {
+      background-color: #000;
+      background-image: url('#{$imageSrc}/header_bg1.png');
+    }
+    &-2 {
+      background-color: #fff;
+      background-image: url('#{$imageSrc}/header_bg2.png');
+    }
+    &-3 {
+      background-color: #000;
+      background-image: url('#{$imageSrc}/header_bg3.png');
+    }
+  }
 }
 
 #logo {
@@ -365,6 +414,7 @@ button {
   }
 }
 
+//navigation
 .navigation {
   padding-top: 13.2rem;
   text-align: right;
@@ -421,44 +471,23 @@ button {
   }
 }
 
-.header_bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: inline-block;
-  right: 0;
-  margin: 0 -7.2rem;
-  z-index: -1;
-  height: 88rem;
-  background: #000 url('#{$imageSrc}/header_bg1.png') no-repeat center bottom /
-    cover;
-  display: none;
-  transition: all ease 0.3s;
-  &-1 {
-    background-color: #000;
-    background-image: url('#{$imageSrc}/header_bg1.png');
-  }
-  &-2 {
-    background-color: #fff;
-    background-image: url('#{$imageSrc}/header_bg2.png');
-  }
-  &-3 {
-    background-color: #000;
-    background-image: url('#{$imageSrc}/header_bg3.png');
-  }
-}
-
 .main {
   padding-top: 8.4rem;
 }
+
 .section__inner {
   padding: 0 7.2rem;
   &--info {
     padding-top: 7.2rem;
+    position: relative;
   }
 }
+
+// index
 .info {
   min-height: 92.4rem;
+  background: url('#{$imageSrc}/main_visual.png') no-repeat;
+  background-size: cover;
 }
 
 .tit__wrap {
@@ -489,17 +518,6 @@ button {
     + {
       .tit__item {
         margin-right: 17.3rem;
-      }
-    }
-    &:last-child {
-      font-size: 3.2rem;
-      font-weight: normal;
-      line-height: 3.8rem;
-      letter-spacing: 0em;
-      text-transform: lowercase;
-      margin-right: 0;
-      &::after {
-        display: none;
       }
     }
   }
@@ -536,6 +554,16 @@ button {
     &.typography5 {
       top: 61.6rem;
       right: 17.8rem;
+    }
+
+    &.typography6 {
+      font-size: 3.2rem;
+      font-weight: 400;
+      line-height: 3.8rem;
+      top: 27.3rem;
+      right: 73.5rem;
+      text-transform: lowercase;
+      text-align: left;
     }
   }
 }
@@ -589,7 +617,7 @@ button {
   }
   &__link-area {
     background: rgba(29, 29, 29, 0.5);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     width: 40.3rem;
     padding: 7.2rem 0 0 5rem;
     min-width: 35.3rem;
@@ -620,7 +648,9 @@ button {
 }
 
 .portfolio {
-  position: relative;
+  .section__inner {
+    position: relative;
+  }
   &__title {
     color: $brown;
     font-size: 31.2rem;
@@ -635,7 +665,7 @@ button {
     font-weight: 800;
     &-tit01 {
       top: 19.7rem;
-      left: 70.9rem;
+      left: 73.1rem;
     }
     &-tit02 {
       display: inline-block;
@@ -755,23 +785,14 @@ button {
 .about_us {
   position: relative;
   color: $brown;
-  background: $white url('#{$imageSrc}/home_bg4.svg') no-repeat bottom left;
-  transition: all 1.05s cubic-bezier(0.19, 1, 0.22, 1);
-  &.brown {
-    color: $white;
-    background: $brown url('#{$imageSrc}/home_bg4-brown.svg') no-repeat bottom
-      left;
 
-    .about_us__title::before,
-    .about_us__title::after {
-      background-color: $white;
-    }
-  }
+  background-color: var(--theme-background-color);
+  background: transparent url('#{$imageSrc}/home_bg4.svg') no-repeat bottom left;
+  transition: all 1.05s cubic-bezier(0.19, 1, 0.22, 1);
+
   &.black {
     color: $white;
-    background-color: $black;
-    background: $black url('#{$imageSrc}/home_bg4-black.svg') no-repeat bottom
-      left;
+    background-image: url('#{$imageSrc}/home_bg4-black.svg');
 
     .about_us__title::before,
     .about_us__title::after {
@@ -876,11 +897,12 @@ button {
 }
 
 .flowline__bg {
-  background: $black url('#{$imageSrc}/bg_typo_extra_fixed.png') center
-    no-repeat;
+  background: url('#{$imageSrc}/bg_typo_extra_fixed.png') center no-repeat;
   height: 55.8rem;
   background-attachment: fixed;
 }
+
+//footer
 .footer {
   color: $brown;
   padding-bottom: 8rem;
@@ -972,9 +994,10 @@ button {
       width: 4.8rem;
       height: 4.8rem;
       background: url('#{$imageSrc}/footer__cursor.svg') no-repeat;
+      background-size: contain;
       position: absolute;
-      right: -2.2rem;
-      top: 2.9rem;
+      right: -2.9rem;
+      top: 3.5rem;
     }
   }
   &__right {
@@ -1031,6 +1054,7 @@ button {
   }
 }
 
+//work
 #workSwiper {
   $workSwiper: '.work-swiper';
 
@@ -1061,11 +1085,7 @@ button {
       content: none;
     }
   }
-  .swiper-slide.last-slide {
-    // margin-right: 14.4rem;
-    width: calc((100vw) / 2);
-    border: none;
-  }
+
   &::after {
     content: '';
     display: inline-block;
@@ -1083,6 +1103,7 @@ button {
 
     height: calc(100vh - 8.4rem - 14.6rem);
     padding: 4rem 5rem 4rem 4rem;
+    transition: all 0.3s ease-in-out;
     &:last-child {
       margin-right: 7.2rem;
     }
@@ -1128,9 +1149,6 @@ button {
       font-size: 8.6rem;
       font-weight: 400;
       position: relative;
-      opacity: 0;
-
-      // transition: 1.05s cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
 
@@ -1228,7 +1246,6 @@ button {
   }
   #{$workSwiper}__date {
     font-size: 1.7rem;
-    font-weight: 700;
   }
   #{$workSwiper}__desc {
     margin-top: 7.2rem;
@@ -1295,8 +1312,7 @@ button {
   }
 }
 
-/* about */
-
+//about
 .about {
   position: relative;
   padding-top: 7.2rem;
@@ -1321,13 +1337,13 @@ button {
       line-height: 21.6rem;
     }
     &-2 {
-      color: $black;
+      color: var(--theme-background-color);
       font-size: 54rem;
       font-weight: 700;
       line-height: 48.6rem;
       // text-shadow: -1px 0 $white, 0 1px $white, 1px 0 $white, 0 -1px $white;
       -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: $white;
+      -webkit-text-stroke-color: var(--theme-text-color);
       position: absolute;
       right: -6.4rem;
       top: 16.9rem;
@@ -1359,7 +1375,7 @@ button {
       position: absolute;
       top: 0;
       right: 0;
-      background-color: $black;
+      background-color: var(--theme-background-color);
       opacity: 0.65;
       height: 100%;
       width: 100%;
@@ -1486,6 +1502,7 @@ button {
   }
 }
 
+//contact
 .contact {
   &__aligner {
     display: flex;
@@ -1557,6 +1574,7 @@ button {
       font-size: 3.2rem;
       font-weight: 600;
       line-height: 1;
+      vertical-align: middle;
     }
   }
   &-swiper__button-next {
@@ -1569,6 +1587,7 @@ button {
     height: 3rem;
     background: url('#{$imageSrc}/contact_arrow_next.svg') center no-repeat;
     margin-left: 0.8rem;
+    vertical-align: middle;
   }
   &-swiper__button-prev::before {
     content: '';
@@ -1578,11 +1597,11 @@ button {
     background: url('#{$imageSrc}/contact_arrow_next.svg') center no-repeat;
     margin-right: 0.8rem;
     transform: rotate(-180deg);
+    vertical-align: middle;
   }
 
   &-swiper__button-request {
     margin-left: auto;
-    vertical-align: middle;
 
     display: none;
 
@@ -1590,6 +1609,7 @@ button {
       color: $white;
       font-size: 3.2rem;
       font-weight: 800;
+      vertical-align: middle;
     }
 
     &::before {
@@ -1599,6 +1619,7 @@ button {
       height: 4rem;
       margin-right: 0.4rem;
       background: url('#{$imageSrc}/icon_send.svg') center no-repeat;
+      vertical-align: middle;
     }
   }
 
@@ -1682,27 +1703,15 @@ button {
     position: relative;
   }
 
-  &__label {
-    color: $gray;
-    font-size: 1.8rem;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
   &__input {
     width: 100%;
     height: 100%;
     font-size: 1.8rem;
-    padding-left: 7.8rem;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #faf9f7;
+    border-bottom: 1px solid $white;
     background: transparent;
-    color: #faf9f7;
+    color: $white;
   }
 
   &__checked {
@@ -1864,6 +1873,7 @@ button {
   }
 }
 
+//cursor
 .cursor {
   position: fixed;
   top: -1000px;

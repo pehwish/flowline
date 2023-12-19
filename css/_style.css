@@ -211,7 +211,7 @@ header
 }
 
 .header--black #logo {
-  background-image: url('/assets/logo--black.svg');
+  background-image: url('/flowline/assets/logo--black.svg');
 }
 
 .header--black .header-button__burger {
@@ -227,7 +227,7 @@ header
 }
 
 #logo {
-  background: url('/assets/logo.svg') no-repeat;
+  background: url('/flowline/assets/logo.svg') no-repeat;
   display: inline-block;
   height: 28px;
   width: 152px;
@@ -354,7 +354,8 @@ header
   z-index: -1;
   height: 880px;
 
-  background: #000 url('/assets/header_bg1.png') no-repeat center bottom / cover;
+  background: #000 url('/flowline/assets/header_bg1.png') no-repeat center
+    bottom / cover;
 
   display: none;
   transition: all ease 0.3s;
@@ -365,17 +366,17 @@ header
 
 .header_bg-1 {
   background-color: #000;
-  background-image: url('/assets/header_bg1.png');
+  background-image: url('/flowline/assets/header_bg1.png');
 }
 
 .header_bg-2 {
   background-color: #fff;
-  background-image: url('/assets/header_bg2.png');
+  background-image: url('/flowline/assets/header_bg2.png');
 }
 
 .header_bg-3 {
   background-color: #000;
-  background-image: url('/assets/header_bg3.png');
+  background-image: url('/flowline/assets/header_bg3.png');
 }
 
 .navigation__text {
@@ -562,7 +563,7 @@ header
 }
 
 .what_we_do__arrow {
-  background: url('/assets/home_arrow.svg') right no-repeat;
+  background: url('/flowline/assets/home_arrow.svg') right no-repeat;
   display: inline-flex;
   align-items: center;
   padding-right: 4px;
@@ -606,7 +607,7 @@ header
   text-indent: -9999px;
   width: 169px;
   height: 40px;
-  background: url('/assets/home_portfolio-text.png') no-repeat;
+  background: url('/flowline/assets/home_portfolio-text.png') no-repeat;
   top: 376px;
   right: 373px;
 }
@@ -680,7 +681,7 @@ header
 .portfolio__carousel__arrows .swiper-button-next::after,
 .portfolio__carousel__arrows .swiper-button-prev::after {
   content: '';
-  background: url('/assets/icon_prev.svg') no-repeat;
+  background: url('/flowline/assets/icon_prev.svg') no-repeat;
   display: inline-block;
   width: 80px;
   height: 80px;
@@ -713,7 +714,7 @@ header
 .about_us {
   position: relative;
   color: #9a7c63;
-  background: #fff url('/assets/home_bg4.svg') bottom left no-repeat;
+  background: #fff url('/flowline/assets/home_bg4.svg') bottom left no-repeat;
 }
 
 .about_us::after {
@@ -724,7 +725,7 @@ header
   width: 465px;
   height: 220px;
   right: 0;
-  background: url('/assets/home_bg5.svg');
+  background: url('/flowline/assets/home_bg5.svg');
 }
 
 .about_us__title {
@@ -804,7 +805,8 @@ header
 }
 
 .flowline__bg {
-  background: #151515 url('/assets/bg_typo_extra_fixed.png') center no-repeat;
+  background: #151515 url('/flowline/assets/bg_typo_extra_fixed.png') center
+    no-repeat;
   height: 558px;
 
   background-attachment: fixed;
@@ -872,7 +874,7 @@ header
   display: inline-block;
   width: 48px;
   height: 48px;
-  background: url('/assets/footer__cursor.svg') no-repeat;
+  background: url('/flowline/assets/footer__cursor.svg') no-repeat;
   position: absolute;
   right: -22px;
   top: 29px;

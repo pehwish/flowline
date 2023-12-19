@@ -10,6 +10,12 @@ gsap.ticker.add(time => {
 
 gsap.ticker.lagSmoothing(0);
 
+const $white = '#faf9f7';
+const $black = '#151515';
+const $brown = '#9a7c63';
+const $gray = '#858585';
+const $blue = '#adcae4';
+
 function init() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -97,6 +103,7 @@ function headerAction() {
   });
 }
 
+//work slide
 function createWorkSlide(workObj, isFirst = false, filter) {
   let firstSlide = `<div class="swiper-slide first-slide">
                   <div>
@@ -130,7 +137,7 @@ function createWorkSlide(workObj, isFirst = false, filter) {
                       return `<span class="work-swiper__type work-swiper__type--${item.type[index]}">${renderText}</span>`;
                     })
                     .join('')}
-                  <a href="#none" class="work-swiper__link">
+                  <a href="${item.url}" class="work-swiper__link">
                     <h3 class="work-swiper__heading plus_jakarta_sans">
                       ${item.title}
                     </h3>
@@ -154,80 +161,87 @@ function createWorkSlide(workObj, isFirst = false, filter) {
               </div>`;
   });
 
-  temp += '<div class="swiper-slide last-slide"></div>';
-
   return temp;
 }
 
+/* work page* */
 function workPage() {
   const workSwiper = document.querySelector('#workSwiper');
   const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-  let temp = createWorkSlide(works, true);
-
-  swiperWrapper.innerHTML = temp;
+  const swiperNavs = document.querySelectorAll('.work__nav-button');
   let swiper;
+  swiperWrapper.innerHTML = createWorkSlide(works, true);
+
+  //init animation
+  const workTl = gsap.timeline({});
+
+  workTl
+    .staggerFromTo(
+      '.work__heading__item',
+      0.3,
+      {
+        autoAlpha: 0,
+        y: 110
+      },
+      {
+        autoAlpha: 1,
+        y: 0
+      },
+      0.35
+    )
+    .add(() => workSwiper.classList.add('active'))
+    .fromTo(
+      '.work-swiper__align',
+      0.3,
+      {
+        autoAlpha: 0,
+        y: 30
+      },
+      {
+        autoAlpha: 1,
+        y: 0
+      }
+    )
+    .fromTo(
+      '.work__nav-button',
+      0.1,
+      { ease: Linear.easeNone, y: 20, autoAlpha: 0 },
+      {
+        ease: Linear.easeNone,
+        autoAlpha: 1,
+        y: 0
+      }
+    );
+
   swiper = new Swiper('#workSwiper', {
     slidesPerView: 'auto',
     spaceBetween: 0,
     mousewheel: true,
     observer: true,
-    observeParents: true
+    observeParents: true,
+    loop: true,
+    loopedSlides: 1,
+    direction: 'horizontal',
+    speed: 600,
+    parallax: true
   });
 
-  const tl = gsap.timeline({
-    onComplete: function () {
-      workSwiper.classList.add('active');
+  const updateWorkSlide = (filter = '') => {
+    let newWorks;
+    if (filter === '') {
+      newWorks = works;
+    } else {
+      newWorks = works.filter(work => work.type.includes(filter));
     }
-  });
 
-  tl.staggerFromTo(
-    '.work__heading__item',
-    0.3,
-    {
-      ease: 'power3.out',
-      opacity: 0,
-      y: 110
-    },
-    {
-      ease: 'power3.out',
-      opacity: 1,
-      y: 0
-    },
-    0.5
-  );
+    swiperWrapper.innerHTML = createWorkSlide(newWorks, filter === '', filter);
 
-  const tl2 = gsap.timeline({
-    delay: 1.3
-  });
-  tl2
-    .fromTo(
-      '.work-swiper__align',
-      0.4,
-      {
-        ease: 'power3.out',
-        opacity: 0,
-        y: 30
-      },
-      {
-        ease: 'power3.out',
-        opacity: 1,
-        y: 0
-      },
-      0.7
-    )
-    .fromTo(
-      '.work__nav',
-      0.6,
-      { ease: 'power3.out', opacity: 0 },
-      {
-        ease: 'power3.out',
-        opacity: 1,
-        y: 0
-      }
-    );
-
-  const swiperNavs = document.querySelectorAll('.work__nav-button');
+    swiper.updateSize();
+    swiper.updateSlides();
+    swiper.updateSlidesClasses();
+    swiper.slideTo(0);
+    swiper.update();
+  };
 
   for (let item of swiperNavs) {
     item.addEventListener('click', function () {
@@ -235,26 +249,58 @@ function workPage() {
 
       let filter = item.dataset.filter;
 
-      let newWorks =
-        filter === ''
-          ? works
-          : works.filter(work => work.type.includes(filter));
-      let temp = createWorkSlide(newWorks, filter === '', filter);
-
-      swiperWrapper.innerHTML = temp;
-
-      swiper.updateSize();
-      swiper.updateSlides();
-      swiper.updateSlidesClasses();
-      swiper.slideTo(0);
-      swiper.update();
+      updateWorkSlide(filter);
 
       item.classList.add('work__nav-button--active');
     });
   }
 }
 
+/* contact page */
 function contactPage() {
+  // contact page init animation
+  const contactTl = gsap.timeline({});
+
+  contactTl
+    .fromTo(
+      '.contact__heading',
+      0.4,
+      {
+        opacity: 0,
+        y: 70
+      },
+      {
+        opacity: 1,
+        y: 0
+      }
+    )
+    .fromTo(
+      '.contact__info',
+      0.4,
+      {
+        opacity: 0,
+        y: 70
+      },
+      {
+        opacity: 1,
+        y: 0
+      },
+      0.4
+    )
+    .fromTo(
+      '.contact__right',
+      0.4,
+      {
+        opacity: 0,
+        y: 70
+      },
+      {
+        opacity: 1,
+        y: 0
+      },
+      0.7
+    );
+
   const contactSwiper = document.querySelector('.contact-swiper');
   const control = document.querySelector('.contact__control');
 
@@ -267,6 +313,7 @@ function contactPage() {
 
   const selectButtons = document.querySelectorAll('.contact-swiper__button');
 
+  // 버튼 선택
   for (let item of selectButtons) {
     item.addEventListener('click', function () {
       let siblings = item.parentElement.children;
@@ -276,6 +323,8 @@ function contactPage() {
       item.classList.add('contact-swiper__button--active');
     });
   }
+
+  //파일 업로드
   fileInput.addEventListener('change', function (e) {
     let name = e.target.files[0].name;
 
@@ -291,13 +340,14 @@ function contactPage() {
     fileWrap.classList.add('active');
   });
 
+  //파일 삭제
   function deleteFile() {
     fileInput.value = '';
     filename.innerHTML = ``;
     fileWrap.classList.remove('active');
   }
 
-  var swiper = new Swiper('.contact-swiper', {
+  new Swiper('.contact-swiper', {
     effect: 'fade',
     onlyExternal: true,
     noSwiping: true,
@@ -308,7 +358,6 @@ function contactPage() {
     },
     on: {
       slideChange: index => {
-        console.log(index.snapIndex);
         if (index.snapIndex >= 4) {
           nextBtn.style.display = 'none';
           requestBtn.style.display = 'inline-flex';
@@ -327,6 +376,7 @@ function contactPage() {
     finishSlide.style.display = 'block';
   }
 
+  //전송 버튼
   requestBtn.addEventListener('click', handleSubmit, false);
 }
 
@@ -371,7 +421,7 @@ function pageTransition() {
       '.page-transition',
       1,
       {
-        backgroundColor: '#000'
+        backgroundColor: $black
       },
       1.46
     )
@@ -414,40 +464,32 @@ function textAnimation() {
   };
   loop();
 }
-function mainPage() {
-  var swiper = new Swiper('.portfolio-swiper', {
-    slidesPerView: 2.4,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    autoplay: {
-      delay: 2500
-    }
-  });
 
-  const tl = gsap.timeline({
+/* main page */
+function mainPage() {
+  // info
+  const infoTl = gsap.timeline({
     ScrollTrigger: '.info',
     start: 'top center',
     end: 'bottom bottom'
   });
 
-  tl.staggerFromTo(
+  infoTl.staggerFromTo(
     '.typography__item',
-    0.4,
+    0.3,
     {
       opacity: 0,
-      webkitFilter: 'blur(8px)'
+      webkitFilter: 'blur(9px)'
     },
     {
       opacity: 1,
       webkitFilter: 'blur(0px)'
     },
-    0.5
+    0.45
   );
 
-  const tl2 = gsap.timeline({
+  //what we do
+  const whatWeDoTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.what_we_do',
       start: 'top center',
@@ -455,13 +497,13 @@ function mainPage() {
     }
   });
 
-  tl2.staggerFromTo(
+  whatWeDoTl.staggerFromTo(
     '.what_we_do__item',
     0.3,
     {
       ease: Power2.easeOut,
       opacity: 0,
-      y: 20
+      y: 40
     },
     {
       ease: Power2.easeOut,
@@ -471,34 +513,24 @@ function mainPage() {
     0.5
   );
 
-  textAnimation();
-  let aboutUS = document.querySelector('.about_us');
-  let scrollNum = 0;
-  let elementTop = aboutUS.offsetTop;
-  const styles = ['blue', 'black'];
-
-  window.addEventListener('scroll', () => {
-    scrollNum = window.scrollY;
-
-    if (scrollNum + 200 >= elementTop && scrollNum + 200 < elementTop + 250) {
-      aboutUS.classList.add('brown');
-    } else if (scrollNum + 200 > elementTop + 250) {
-      aboutUS.classList.remove('brown');
-      aboutUS.classList.add('black');
-    } else if (scrollNum + 200 < elementTop) {
-      aboutUS.classList.remove('brown');
-      aboutUS.classList.remove('black');
-    }
-
-    if (
-      window.innerHeight + Math.round(scrollNum) >=
-      document.body.offsetHeight
-    ) {
-      const footer = document.querySelector('footer');
-
-      footer.className = `footer ${styles[getRandom(0, 1)]}`;
+  //portfolie swiper
+  new Swiper('.portfolio-swiper', {
+    slidesPerView: 2.4,
+    spaceBetween: 30,
+    loop: true,
+    loopedSlides: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    autoplay: {
+      delay: 3500
     }
   });
+
+  textAnimation();
+
+  mainScrollAnimation();
 }
 
 function toggleClass(element, className) {
@@ -509,33 +541,93 @@ function toggleClass(element, className) {
   }
 }
 
-function aboutPage() {
-  console.log('about');
+function mainScrollAnimation() {
+  const aboutUS = document.querySelector('.about_us');
+  let scrollNum = 0;
+  let elementTop = aboutUS.offsetTop;
+  let elementHeight = aboutUS.offsetHeight;
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
 
-  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    scrollNum = window.scrollY;
+
+    if (
+      scrollNum + 184 > elementTop &&
+      scrollNum < elementTop + elementHeight - 184
+    ) {
+      aboutUS.classList.remove('black');
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $white
+      );
+      document.documentElement.style.setProperty(
+        '--theme-convert-color',
+        $black
+      );
+
+      header.classList.add('header--black');
+    } else {
+      aboutUS.classList.add('black');
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $black
+      );
+      document.documentElement.style.setProperty(
+        '--theme-convert-color',
+        $white
+      );
+      header.classList.remove('header--black');
+    }
+
+    if (
+      window.innerHeight + Math.round(scrollNum) >=
+      document.body.offsetHeight
+    ) {
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $blue
+      );
+      footer.classList.add('blue');
+    } else {
+      footer.classList.remove('blue');
+    }
+  });
+}
+
+/**about page */
+function aboutPage() {
+  const header = document.querySelector('header');
   const about = document.querySelector('.about');
-  document.body.style.backgroundColor = '#9a7c63';
-  header.style.backgroundColor = '#9a7c63';
+  const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
+
+  // intro animation
+  document.documentElement.style.setProperty(
+    '--theme-background-color',
+    $brown
+  );
   about.classList.add('brown');
 
-  var pageTl = gsap.timeline({
+  var aboutTl = gsap.timeline({
     onComplete: function () {
-      document.body.style.backgroundColor = '#151515';
-      header.style.backgroundColor = '#151515';
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $black
+      );
       about.classList.remove('brown');
     }
   });
 
-  pageTl
+  aboutTl
     .fromTo(
       '.about__heading-1',
       0.4,
       {
-        ease: 'power3.out',
+        ease: Power1.easeOut,
         x: -930
       },
       {
-        ease: 'power3.out',
+        ease: Power1.easeOut,
         x: 0
       },
       0.7
@@ -543,9 +635,9 @@ function aboutPage() {
     .fromTo(
       '.about__heading-2',
       0.6,
-      { ease: 'power3.out', x: 900 },
+      { ease: Power1.easeOut, x: 900 },
       {
-        ease: 'power3.out',
+        ease: Power1.easeOut,
         x: 0
       },
       0.7
@@ -553,16 +645,15 @@ function aboutPage() {
     .fromTo(
       '.about__heading-3',
       0.6,
-      { ease: 'power3.out', x: 1100 },
+      { ease: Power1.easeOut, x: 1100 },
       {
-        ease: 'power3.out',
+        ease: Power1.easeOut,
         x: 0
       },
       0.8
     );
 
-  const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
-
+  //text line
   for (let line of typoHeadingLine) {
     let lineMask = document.createElement('span');
     lineMask.className = 'line-mask';
@@ -570,20 +661,22 @@ function aboutPage() {
   }
 
   gsap.utils.toArray('.typo__heading-line').forEach(line => {
-    let tl = gsap.timeline({
+    let maskTl = gsap.timeline({
       scrollTrigger: {
         trigger: line,
         start: 'top center',
-        end: 'bottom center'
+        end: 'bottom center',
+        scrub: 1
       }
     });
-    tl.to(line.querySelector('.line-mask'), {
+    maskTl.to(line.querySelector('.line-mask'), {
       width: '0%',
       duration: 4
     });
   });
 
-  const tl = gsap.timeline({
+  // principle
+  const principleTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.principle__images',
       start: 'top center',
@@ -591,7 +684,7 @@ function aboutPage() {
     }
   });
 
-  tl.staggerFromTo(
+  principleTl.staggerFromTo(
     '.principle__item',
     0.4,
     {
@@ -607,6 +700,7 @@ function aboutPage() {
     0.7
   );
 
+  //wo its the flowline
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: '.so_its_the_flowline',
@@ -617,7 +711,6 @@ function aboutPage() {
   // tl2;
 
   tl2
-
     .staggerFromTo(
       '.so_its_the_flowline__item',
       0.2,
@@ -633,6 +726,7 @@ function aboutPage() {
       },
       0.4
     )
+
     .to(
       '.so_its_the_flowline',
       0.8,
@@ -641,7 +735,15 @@ function aboutPage() {
         color: '#9a7c63'
       },
       1.2
-    );
+    )
+    .add(() => {
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $white
+      );
+      document.documentElement.style.setProperty('--theme-text-color', $brown);
+      header.classList.add('header--black');
+    });
 }
 
 init();

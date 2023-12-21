@@ -16,8 +16,27 @@ const $brown = '#9a7c63';
 const $gray = '#858585';
 const $blue = '#adcae4';
 
-function init() {
+let images = [];
+//이미지 프리로드
+const preLoadImg = images => {
+  images.forEach(image => {
+    const img = new Image();
+    img.src = image;
+  });
+};
+
+async function init() {
   gsap.registerPlugin(ScrollTrigger);
+  await preLoadImg([
+    '/flowline/assets/home_image01.png',
+    '/flowline/assets/home_image02.png',
+    '/flowline/assets/@project01.png',
+    '/flowline/assets/@project02.png',
+    '/flowline/assets/page-transition__bg.png',
+    '/flowline/assets/about_img01.png',
+    '/flowline/assets/about_img02.png',
+    '/flowline/assets/about_img03.png'
+  ]);
 
   const flowline = sessionStorage.getItem('flowline');
   const main = document.querySelector('.main').dataset.type;
@@ -41,9 +60,8 @@ function init() {
     sessionStorage.setItem('flowline', true);
     pageTransition();
   }
-
-  headerAction();
   cursorAnimation();
+  headerAction();
 }
 
 function cursorAnimation() {
@@ -358,6 +376,7 @@ function contactPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     contactSwiper.style.display = 'none';
     control.style.display = 'none';
     finishSlide.style.display = 'block';
@@ -535,9 +554,15 @@ function mainScrollAnimation() {
   let elementHeight = aboutUS.offsetHeight;
   const header = document.querySelector('header');
   const footer = document.querySelector('footer');
+  header.classList.add('header--main-no-scroll');
 
   window.addEventListener('scroll', () => {
     scrollNum = window.scrollY;
+    if (scrollNum < 40) {
+      header.classList.add('header--main-no-scroll');
+    } else {
+      header.classList.remove('header--main-no-scroll');
+    }
 
     if (
       scrollNum + 184 > elementTop &&

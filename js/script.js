@@ -13,8 +13,6 @@ gsap.ticker.lagSmoothing(0);
 const $white = '#faf9f7';
 const $black = '#151515';
 const $brown = '#9a7c63';
-const $gray = '#858585';
-const $blue = '#adcae4';
 
 let images = [];
 //이미지 프리로드
@@ -30,8 +28,16 @@ async function init() {
   await preLoadImg([
     '/flowline/assets/home_image01.png',
     '/flowline/assets/home_image02.png',
-    '/flowline/assets/@project01.png',
-    '/flowline/assets/@project02.png',
+    '/flowline/assets/main_portfolio_01.jpg',
+    '/flowline/assets/main_portfolio_02.jpg',
+    '/flowline/assets/main_portfolio_03.jpg',
+    '/flowline/assets/main_portfolio_04.jpg',
+    '/flowline/assets/main_portfolio_05.jpg',
+    '/flowline/assets/main_portfolio_06.jpg',
+    '/flowline/assets/main_portfolio_07.jpg',
+    '/flowline/assets/main_portfolio_08.jpg',
+    '/flowline/assets/main_portfolio_09.jpg',
+    '/flowline/assets/main_portfolio_10.jpg',
     '/flowline/assets/page-transition__bg.png',
     '/flowline/assets/about_img01.png',
     '/flowline/assets/about_img02.png',
@@ -53,6 +59,7 @@ async function init() {
       break;
     case 'main':
       if (flowline) mainPage();
+
     default:
       break;
   }
@@ -60,6 +67,7 @@ async function init() {
     sessionStorage.setItem('flowline', true);
     pageTransition();
   }
+
   cursorAnimation();
   headerAction();
 }
@@ -415,11 +423,8 @@ function pageTransition() {
         delay: 0.06
       },
       0
-    );
-
-  pageTl
+    )
     .to('.page-transition__text-wrap', {
-      autoAlpha: 0,
       display: 'none',
       delay: 0.6
     })
@@ -427,7 +432,8 @@ function pageTransition() {
       '.page-transition',
       1,
       {
-        backgroundColor: $black
+        backgroundColor: $black,
+        delay: 0.6
       },
       1.46
     )
@@ -491,7 +497,7 @@ function mainPage() {
       opacity: 1,
       webkitFilter: 'blur(0px)'
     },
-    0.45
+    0.35
   );
 
   //what we do
@@ -591,19 +597,6 @@ function mainScrollAnimation() {
       );
       header.classList.remove('header--black');
     }
-
-    if (
-      window.innerHeight + Math.round(scrollNum) >=
-      document.body.offsetHeight
-    ) {
-      document.documentElement.style.setProperty(
-        '--theme-background-color',
-        $blue
-      );
-      footer.classList.add('blue');
-    } else {
-      footer.classList.remove('blue');
-    }
   });
 }
 
@@ -613,13 +606,15 @@ function aboutPage() {
   const about = document.querySelector('.about');
   const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
 
-  // intro animation
-  document.documentElement.style.setProperty(
-    '--theme-background-color',
-    $brown
-  );
-  about.classList.add('brown');
+  if (window.scrollY <= about.offsetHeight) {
+    document.documentElement.style.setProperty(
+      '--theme-background-color',
+      $brown
+    );
+    about.classList.add('brown');
+  }
 
+  // intro animation
   var aboutTl = gsap.timeline({
     onComplete: function () {
       document.documentElement.style.setProperty(
@@ -663,7 +658,8 @@ function aboutPage() {
         x: 0
       },
       0.8
-    );
+    )
+    .to('.about', { opacity: 0, duration: 1, delay: 1.2 });
 
   //text line
   for (let line of typoHeadingLine) {
@@ -712,24 +708,27 @@ function aboutPage() {
     0.7
   );
 
-  //wo its the flowline
+  //so its the flowline
   const tl2 = gsap.timeline({
     scrollTrigger: {
-      trigger: '.so_its_the_flowline',
-      start: 'top center',
-      end: '+=200' // 200px past the start
+      trigger: '.principle__images',
+      start: 'bottom 30%',
+      end: '+=100' // 200px past the start,
     }
   });
   // tl2;
 
   tl2
+    .to('.so_its_the_flowline', 0.8, {
+      backgroundColor: $white,
+      color: $brown
+    })
     .staggerFromTo(
       '.so_its_the_flowline__item',
       0.2,
       {
         ease: 'power3.out',
-        opacity: 0,
-        y: 110
+        opacity: 0
       },
       {
         ease: 'power3.out',
@@ -739,15 +738,6 @@ function aboutPage() {
       0.4
     )
 
-    .to(
-      '.so_its_the_flowline',
-      0.8,
-      {
-        backgroundColor: '#faf9f7',
-        color: '#9a7c63'
-      },
-      1.2
-    )
     .add(() => {
       document.documentElement.style.setProperty(
         '--theme-background-color',

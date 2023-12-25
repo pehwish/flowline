@@ -1,14 +1,14 @@
 import works from './work.js';
 
-const lenis = new Lenis();
+// const lenis = new Lenis();
 
-lenis.on('scroll', ScrollTrigger.update);
+// lenis.on('scroll', ScrollTrigger.update);
 
-gsap.ticker.add(time => {
-  lenis.raf(time * 1000);
-});
+// gsap.ticker.add(time => {
+//   lenis.raf(time * 1000);
+// });
 
-gsap.ticker.lagSmoothing(0);
+// gsap.ticker.lagSmoothing(0);
 
 const $white = '#faf9f7';
 const $black = '#151515';
@@ -527,8 +527,8 @@ function mainPage() {
 
   //portfolie swiper
   new Swiper('.portfolio-swiper', {
-    slidesPerView: 2.4,
-    spaceBetween: 30,
+    slidesPerView: 1.7,
+    spaceBetween: 18,
     loop: true,
     loopedSlides: 1,
     navigation: {
@@ -537,6 +537,17 @@ function mainPage() {
     },
     autoplay: {
       delay: 3500
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+
+      1024: {
+        slidesPerView: 2.4,
+        spaceBetween: 30
+      }
     }
   });
 

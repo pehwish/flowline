@@ -36,22 +36,22 @@ const preLoadImg = images => {
 async function init() {
   gsap.registerPlugin(ScrollTrigger);
   await preLoadImg([
-    '/assets/home_image01.png',
-    '/assets/home_image02.png',
-    '/assets/main_portfolio_01.jpg',
-    '/assets/main_portfolio_02.jpg',
-    '/assets/main_portfolio_03.jpg',
-    '/assets/main_portfolio_04.jpg',
-    '/assets/main_portfolio_05.jpg',
-    '/assets/main_portfolio_06.jpg',
-    '/assets/main_portfolio_07.jpg',
-    '/assets/main_portfolio_08.jpg',
-    '/assets/main_portfolio_09.jpg',
-    '/assets/main_portfolio_10.jpg',
-    '/assets/page-transition__bg.png',
-    '/assets/about_img01.png',
-    '/assets/about_img02.png',
-    '/assets/about_img03.png'
+    '/flowline/assets/home_image01.png',
+    '/flowline/assets/home_image02.png',
+    '/flowline/assets/main_portfolio_01.jpg',
+    '/flowline/assets/main_portfolio_02.jpg',
+    '/flowline/assets/main_portfolio_03.jpg',
+    '/flowline/assets/main_portfolio_04.jpg',
+    '/flowline/assets/main_portfolio_05.jpg',
+    '/flowline/assets/main_portfolio_06.jpg',
+    '/flowline/assets/main_portfolio_07.jpg',
+    '/flowline/assets/main_portfolio_08.jpg',
+    '/flowline/assets/main_portfolio_09.jpg',
+    '/flowline/assets/main_portfolio_10.jpg',
+    '/flowline/assets/page-transition__bg.png',
+    '/flowline/assets/about_img01.png',
+    '/flowline/assets/about_img02.png',
+    '/flowline/assets/about_img03.png'
   ]);
 
   const flowline = sessionStorage.getItem('flowline');
@@ -277,6 +277,8 @@ function workPage() {
   };
 
   window.addEventListener('resize', resizeSwiper);
+
+  resizeSwiper();
 
   const updateWorkSlide = (filter = '') => {
     let newWorks;

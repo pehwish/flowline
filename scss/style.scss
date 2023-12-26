@@ -31,7 +31,7 @@ $gray: #858585;
 $blue: #adcae4;
 
 // $imageSrc: '/assets';
-$imageSrc: '/flowline/assets';
+$imageSrc: '/assets';
 
 :root {
   --br: 0.2rem;
@@ -1067,7 +1067,7 @@ a {
 
     position: relative;
     .swiper {
-      height: 98rem;
+      // height: 98rem;
     }
     .swiper-slide {
       &:first-child {
@@ -1090,15 +1090,19 @@ a {
           top: 0;
           right: 0;
           bottom: 0;
-          background: rgba(29, 29, 29, 0.3);
-          backdrop-filter: blur(6px);
-          opacity: 0;
+          background: rgba(29, 29, 29, 0.6);
+          backdrop-filter: blur(3px);
+          opacity: 1;
           transition: all ease 0.3s;
         }
       }
       &:hover {
         .portfolio-slide__info {
           color: $brown;
+        }
+        .portfolio-slide::after {
+          // opacity: 0.3;
+          backdrop-filter: blur(0);
         }
       }
     }
@@ -1113,9 +1117,6 @@ a {
     }
     @include mq(desktop) {
       margin: 0 -2rem;
-      .swiper {
-        height: 61.4rem;
-      }
 
       .swiper-slide {
         width: 22rem;
@@ -1124,34 +1125,37 @@ a {
         }
       }
     }
-    @include mq(underDesktop) {
-      .swiper {
-        height: 50.9rem;
-      }
-    }
-
-    @include mq(tablet) {
-      .swiper {
-        height: 27.9rem;
-      }
-    }
   }
   &-slide {
     width: 100%;
     height: 100%;
-    img {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
+
+    .pc_image {
       display: block;
     }
+
+    .mobile_image {
+      display: none;
+    }
+
+    @include mq(tablet) {
+      .pc_image {
+        display: none;
+      }
+
+      .mobile_image {
+        display: block;
+      }
+    }
+    img {
+      width: 100%;
+    }
     &__info {
-      position: relative;
+      position: absolute;
       z-index: 1;
-      color: #fff;
+      color: $white;
       transition: all ease-in-out 0.3s;
-      padding: 3.2rem 0 0 3.2rem;
+      padding: 3.2rem 3.2rem;
     }
     &__title {
       font-size: 3.6rem;
@@ -1168,7 +1172,7 @@ a {
 
     @include mq(overDesktop) {
       &__info {
-        padding: 2.4rem 0 0 2.4rem;
+        padding: 2.4rem;
       }
       &__title {
         font-size: 2.6rem;
@@ -1176,7 +1180,7 @@ a {
     }
     @include mq(desktop) {
       &__info {
-        padding: 1.2rem 0 0 1.2rem;
+        padding: 1.2rem;
       }
       &__title {
         font-size: 1.7rem;
@@ -1186,6 +1190,9 @@ a {
       &__desc {
         font-size: 1.2rem;
         line-height: 1.62rem;
+        br {
+          display: none;
+        }
       }
     }
   }
@@ -1926,12 +1933,174 @@ a {
   }
   #{$workSwiper}__text-area {
     max-width: 30rem;
+    padding-right: 6rem;
   }
   #{$workSwiper}__image-area {
     img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+    }
+
+    .pc_img {
+      display: block;
+    }
+    .mobile_img {
+      display: none;
+    }
+  }
+
+  #{$workSwiper}__mobile_image {
+    display: none;
+  }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    // height: 100vh;
+    .swiper-wrapper {
+      display: block;
+    }
+    &.active {
+      &::after {
+        width: 100%;
+      }
+      .swiper-slide {
+        &:not(.first-slide)::before {
+          height: 1px;
+          width: 100%;
+        }
+        &.first-slide + .swiper-slide {
+          margin-top: 4rem;
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+
+    &.work-swiper--fixed {
+      padding-top: 4rem;
+    }
+    .swiper-slide.first-slide {
+      width: 100% !important;
+      margin-left: 0;
+      padding: 2rem;
+      padding-bottom: 4rem;
+      align-items: flex-start;
+      height: 28.4rem !important;
+      &::before {
+        content: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 1px;
+      background-color: $white;
+      position: absolute;
+      bottom: 0;
+      left: 7.2rem;
+      transition: width 1.05s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .swiper-slide {
+      width: 100%;
+      height: auto;
+      padding: 4rem 2rem 2rem 2rem;
+
+      &:last-child {
+        margin-right: 7.2rem;
+      }
+      &.first-slide {
+        &::before {
+          content: none;
+        }
+      }
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 1px;
+        background-color: $white;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    .swiper-slide-active {
+      &:not(.first-slide) {
+        &::before {
+          content: none;
+        }
+        border-bottom: 1px solid $white;
+        + {
+          .swiper-slide::before {
+            content: none;
+          }
+        }
+      }
+    }
+
+    #{$workSwiper}__mobile_image {
+      display: block;
+      margin: 2.8rem 0;
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+
+    .work__heading {
+      &__item {
+        font-size: 5.6rem;
+        line-height: 5.6rem;
+      }
+    }
+
+    #{$workSwiper}__align {
+      flex-direction: column;
+      height: 100%;
+    }
+
+    #{$workSwiper}__type {
+      padding: 0.5rem 0.8rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+
+      & + .work-swiper__type {
+        margin-left: 0.8rem;
+      }
+    }
+    #{$workSwiper}__heading {
+      font-size: 2.8rem;
+      line-height: 3.64rem;
+      margin-bottom: 2rem;
+    }
+    #{$workSwiper}__date {
+      font-size: 1.2rem;
+    }
+    #{$workSwiper}__desc {
+      margin-top: 0;
+      line-height: 2rem;
+      letter-spacing: -0.01em;
+
+      + {
+        #{$workSwiper}__desc {
+          margin-top: 2rem;
+        }
+      }
+    }
+    #{$workSwiper}__text-area {
+      max-width: 100%;
+      padding-right: 0;
+    }
+    #{$workSwiper}__image-area {
+      .pc_img {
+        display: none;
+      }
     }
   }
 }
@@ -1973,6 +2142,60 @@ a {
   &-button--active {
     font-weight: 700;
     text-decoration: underline;
+  }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 33.9rem;
+    right: 0;
+    padding: 0 2rem;
+    background-color: $black;
+    z-index: 1;
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      z-index: 1;
+      height: 6rem;
+      width: 100%;
+      border-bottom: 1px solid $white;
+    }
+
+    &.work__nav--fixed {
+      position: fixed;
+      top: 5.5rem;
+    }
+    &-button {
+      font-size: 1.5rem;
+      line-height: 1.95rem;
+
+      + {
+        .work__nav-button {
+          margin-left: 1.3rem;
+        }
+      }
+
+      .is-ready {
+        padding: 0 1.2rem;
+        border-radius: 10rem;
+        position: absolute;
+        height: 3.1rem;
+        background-color: #9a7c63;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: normal;
+        width: max-content;
+        top: -3.2rem;
+        line-height: 3.1rem;
+        left: 0;
+        display: none;
+      }
+    }
   }
 }
 
@@ -2126,8 +2349,8 @@ a {
 }
 
 .so_its_the_flowline {
-  // background-color: $white;
-  // color: $brown;
+  background-color: var(--theme-background-color);
+  color: var(--theme-text-color);
 
   transition: all cubic-bezier(0, 0.55, 0.45, 1) 400ms;
 

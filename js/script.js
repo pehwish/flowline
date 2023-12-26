@@ -14,6 +14,16 @@ const $white = '#faf9f7';
 const $black = '#151515';
 const $brown = '#9a7c63';
 
+const device = {
+  phone: 480,
+  mobile: 767,
+  tablet: 768,
+  underDesktop: 1024,
+  desktop: 1280,
+  overDesktop: 1440,
+  maxDesktop: 1980
+};
+
 let images = [];
 //이미지 프리로드
 const preLoadImg = images => {
@@ -163,14 +173,20 @@ function createWorkSlide(workObj, isFirst = false, filter) {
                       return `<span class="work-swiper__type work-swiper__type--${item.type[index]}">${renderText}</span>`;
                     })
                     .join('')}
-                  <a href="${item.url}" class="work-swiper__link">
+                  <a href="${
+                    item.url
+                  }" class="work-swiper__link" target="_blank">
                     <h3 class="work-swiper__heading plus_jakarta_sans">
                       ${item.title}
                     </h3>
                   </a>
+                  
                   <span class="work-swiper__date plus_jakarta_sans">${
                     item.date
                   }</span>
+                  <div class="work-swiper__mobile_image">
+                    <img src="${item.mobile_image}" alt="" class="mobile_img" />
+                  </div>
                   <p class="work-swiper__desc">
                     ${item.desc1}
                   </p>
@@ -179,9 +195,8 @@ function createWorkSlide(workObj, isFirst = false, filter) {
                   </p>
                   </div>
                   <div class="work-swiper__image-area">
-                    ${item.images.map(
-                      img => `<img src="${img}" alt="" />`
-                    )}                      
+                    <img src="${item.image}" alt="" class="pc_img" />
+                    
                   </div>
                 </div>
               </div>`;
@@ -195,8 +210,10 @@ function workPage() {
   const workSwiper = document.querySelector('#workSwiper');
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const swiperNavs = document.querySelectorAll('.work__nav-button');
+  const swiperNav = document.querySelector('.work__nav');
   let swiper;
   swiperWrapper.innerHTML = createWorkSlide(works, true);
+  let scrollNum = 0;
 
   //init animation
   const workTl = gsap.timeline({});
@@ -239,18 +256,27 @@ function workPage() {
       }
     );
 
-  swiper = new Swiper('#workSwiper', {
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-    mousewheel: true,
-    observer: true,
-    observeParents: true,
-    loop: true,
-    loopedSlides: 1,
-    direction: 'horizontal',
-    speed: 600,
-    parallax: true
-  });
+  const resizeSwiper = () => {
+    if (window.innerWidth >= device.desktop && !swiper) {
+      swiper = new Swiper('#workSwiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        mousewheel: true,
+        observer: true,
+        observeParents: true,
+        loop: true,
+        loopedSlides: 1,
+        direction: 'horizontal',
+        speed: 600,
+        parallax: true
+      });
+    } else if (window.innerWidth < device.desktop && swiper) {
+      swiper.destroy();
+      swiper = null;
+    }
+  };
+
+  window.addEventListener('resize', resizeSwiper);
 
   const updateWorkSlide = (filter = '') => {
     let newWorks;
@@ -262,11 +288,17 @@ function workPage() {
 
     swiperWrapper.innerHTML = createWorkSlide(newWorks, filter === '', filter);
 
-    swiper.updateSize();
-    swiper.updateSlides();
-    swiper.updateSlidesClasses();
-    swiper.slideTo(0);
-    swiper.update();
+    if (window.innerWidth >= device.desktop && !swiper) {
+      swiper.updateSize();
+      swiper.updateSlides();
+      swiper.updateSlidesClasses();
+      swiper.slideTo(0);
+      swiper.update();
+    } else if (window.innerWidth < device.desktop && filter !== '') {
+      swiperNav.classList.add('work__nav--fixed');
+      workSwiper.classList.add('work-swiper--fixed');
+      window.scrollTo(0, 0);
+    }
   };
 
   for (let item of swiperNavs) {
@@ -280,6 +312,27 @@ function workPage() {
       item.classList.add('work__nav-button--active');
     });
   }
+
+  //scroll
+  let swiperNavTop = swiperNav.offsetTop;
+
+  window.addEventListener('scroll', () => {
+    scrollNum = window.scrollY;
+    let filterType = document.querySelector('.work__nav-button--active').dataset
+      .filter;
+
+    if (window.innerWidth < device.desktop) {
+      if (scrollNum + 55 > swiperNavTop && filterType === '') {
+        swiperNav.classList.add('work__nav--fixed');
+      } else if (filterType !== '') {
+        swiperNav.classList.add('work__nav--fixed');
+        workSwiper.classList.add('work-swiper--fixed');
+      } else {
+        swiperNav.classList.remove('work__nav--fixed');
+        workSwiper.classList.remove('work-swiper--fixed');
+      }
+    }
+  });
 }
 
 /* contact page */
@@ -488,7 +541,7 @@ function mainPage() {
 
   infoTl.staggerFromTo(
     '.typography__item',
-    0.3,
+    0.67,
     {
       opacity: 0,
       webkitFilter: 'blur(9px)'
@@ -497,7 +550,7 @@ function mainPage() {
       opacity: 1,
       webkitFilter: 'blur(0px)'
     },
-    0.35
+    0.5
   );
 
   //what we do
@@ -617,24 +670,8 @@ function aboutPage() {
   const about = document.querySelector('.about');
   const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
 
-  if (window.scrollY <= about.offsetHeight) {
-    document.documentElement.style.setProperty(
-      '--theme-background-color',
-      $brown
-    );
-    about.classList.add('brown');
-  }
-
   // intro animation
-  var aboutTl = gsap.timeline({
-    onComplete: function () {
-      document.documentElement.style.setProperty(
-        '--theme-background-color',
-        $black
-      );
-      about.classList.remove('brown');
-    }
-  });
+  var aboutTl = gsap.timeline({});
 
   aboutTl
     .fromTo(
@@ -669,8 +706,7 @@ function aboutPage() {
         x: 0
       },
       0.8
-    )
-    .to('.about', { opacity: 0, duration: 1, delay: 1.2 });
+    );
 
   //text line
   for (let line of typoHeadingLine) {
@@ -730,25 +766,6 @@ function aboutPage() {
   // tl2;
 
   tl2
-    .to('.so_its_the_flowline', 0.8, {
-      backgroundColor: $white,
-      color: $brown
-    })
-    .staggerFromTo(
-      '.so_its_the_flowline__item',
-      0.2,
-      {
-        ease: 'power3.out',
-        opacity: 0
-      },
-      {
-        ease: 'power3.out',
-        opacity: 1,
-        y: 0
-      },
-      0.4
-    )
-
     .add(() => {
       document.documentElement.style.setProperty(
         '--theme-background-color',
@@ -756,7 +773,23 @@ function aboutPage() {
       );
       document.documentElement.style.setProperty('--theme-text-color', $brown);
       header.classList.add('header--black');
-    });
+    })
+    .staggerFromTo(
+      '.so_its_the_flowline__item',
+      0.4,
+      {
+        ease: 'power3.out',
+        opacity: 0,
+        y: 60
+      },
+      {
+        ease: 'power3.out',
+        opacity: 1,
+        y: 0
+      },
+      0.4,
+      0.8
+    );
 }
 
 init();

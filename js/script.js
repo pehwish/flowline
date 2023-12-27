@@ -672,6 +672,14 @@ function aboutPage() {
   const about = document.querySelector('.about');
   const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
 
+  if (window.scrollY <= about.offsetHeight) {
+    document.documentElement.style.setProperty(
+      '--theme-background-color',
+      $brown
+    );
+    about.classList.add('brown');
+  }
+
   // intro animation
   var aboutTl = gsap.timeline({});
 
@@ -708,7 +716,14 @@ function aboutPage() {
         x: 0
       },
       0.8
-    );
+    )
+    .add(() => {
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $black
+      );
+      about.classList.remove('brown');
+    }, 2);
 
   //text line
   for (let line of typoHeadingLine) {
@@ -760,7 +775,7 @@ function aboutPage() {
   //so its the flowline
   const tl2 = gsap.timeline({
     scrollTrigger: {
-      trigger: '.principle__images',
+      trigger: '.principle__list',
       start: 'bottom 30%',
       end: '+=100' // 200px past the start,
     }

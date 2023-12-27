@@ -2198,7 +2198,6 @@ a {
     }
   }
 }
-
 //about
 .about {
   position: relative;
@@ -2244,6 +2243,35 @@ a {
       top: 60.1rem;
     }
   }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    padding-top: 2rem;
+    min-height: 28.5rem;
+
+    &__heading {
+      &-1 {
+        font-size: 6rem;
+        line-height: 5.4rem;
+        letter-spacing: 0em;
+      }
+      &-2 {
+        font-size: 16rem;
+        line-height: 14.4rem;
+        right: auto;
+        left: 9.5rem;
+        top: 7rem;
+      }
+      &-3 {
+        font-size: 6rem;
+        line-height: 5.4rem;
+        right: auto;
+        left: 2rem;
+        top: 21.1rem;
+      }
+    }
+  }
 }
 
 .typo {
@@ -2274,6 +2302,31 @@ a {
     line-height: 1;
     letter-spacing: -0.015em;
     text-align: left;
+    br {
+      display: none;
+    }
+  }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    padding: 3.5rem 0 8rem;
+    &__heading {
+      margin-bottom: 1.5rem;
+      font-size: 3.2rem;
+      line-height: 3.36rem;
+      &-line {
+        font-weight: 700;
+      }
+    }
+    &__description {
+      font-size: 1.4rem;
+      line-height: 2.24rem;
+      text-align: right;
+      br {
+        display: block;
+      }
+    }
   }
 }
 
@@ -2346,6 +2399,64 @@ a {
       left: 27.5rem;
     }
   }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    .section__inner {
+      display: block;
+    }
+
+    &__list {
+      margin-bottom: 4rem;
+      margin-top: 0;
+      height: auto;
+    }
+
+    &__item {
+      &:not(:first-child) {
+        margin-top: 3.2rem;
+      }
+
+      &::before {
+        font-size: 2rem;
+        line-height: 2.1rem;
+      }
+
+      &:nth-child(2) {
+        width: 63%;
+        margin-left: auto;
+
+        &::after {
+          content: '';
+          display: flex;
+          width: 20.7rem;
+          height: 26.2rem;
+          background: url('#{$imageSrc}/m_about_img.png') no-repeat;
+          background-size: contain;
+          margin-left: auto;
+          margin-top: 3.2rem;
+        }
+      }
+      &:nth-child(3) {
+        margin-top: -2.3rem;
+      }
+    }
+    &__heading {
+      font-size: 1.8rem;
+      line-height: 1.89rem;
+      margin: 1.2rem 0;
+    }
+
+    &__description {
+      font-size: 1.4rem;
+      line-height: 2.1rem;
+    }
+
+    &__images {
+      display: none;
+    }
+  }
 }
 
 .so_its_the_flowline {
@@ -2383,6 +2494,32 @@ a {
       position: absolute;
       top: -6.1rem;
       left: -8.5rem;
+    }
+  }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    .section__inner {
+      display: flex;
+    }
+    &__so {
+      font-size: 8rem;
+      line-height: 10.4rem;
+    }
+
+    &__flowline {
+      font-size: 6.8rem;
+      line-height: 8.84rem;
+      margin-top: 11.4rem;
+
+      &::before {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+
+        top: -1.8rem;
+        left: 0;
+      }
     }
   }
 }
@@ -2529,6 +2666,103 @@ a {
       letter-spacing: -0.01em;
     }
   }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    &__aligner {
+      align-items: flex-start;
+      flex-direction: column;
+      height: auto;
+      min-height: calc(100vh - 5.5rem - 15rem);
+      justify-content: flex-start;
+    }
+    &__left {
+      display: block;
+      flex: none;
+    }
+
+    &__heading {
+      font-size: 4rem;
+      line-height: 4rem;
+      height: auto;
+      margin-bottom: 6rem;
+      margin-top: 2rem;
+    }
+
+    &__right {
+      width: 100%;
+    }
+    &__info {
+      position: absolute;
+      bottom: 4rem;
+      flex-direction: column;
+
+      &-item:not(:first-of-type) {
+        margin-left: 0;
+        margin-top: 1.2rem;
+      }
+
+      &-title {
+        font-size: 1.2rem;
+        line-height: 1.32rem;
+        margin-bottom: 0.2rem;
+      }
+      &-desc {
+        font-size: 1.2rem;
+        line-height: 1.44rem;
+      }
+    }
+    &__control {
+      width: 100%;
+      height: 1.8rem;
+    }
+    &-swiper__button-prev,
+    &-swiper__button-next {
+      em {
+        font-size: 1.8rem;
+      }
+    }
+
+    &-swiper__button-next::after {
+      width: 1.8rem;
+      height: 1.8rem;
+      background-size: 1.8rem 1.8rem;
+      margin-left: 0.4rem;
+    }
+    &-swiper__button-prev::before {
+      width: 1.8rem;
+      height: 1.8rem;
+      background-size: 1.8rem 1.8rem;
+      margin-right: 0.4rem;
+    }
+
+    &-swiper__button-request {
+      em {
+        font-size: 1.8rem;
+      }
+      &::before {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-right: 0.4rem;
+        background-size: 1.8rem 1.8rem;
+      }
+    }
+
+    &-finish-slide {
+      &__thx {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+      }
+      &__title {
+        font-size: 2.8rem;
+        margin-bottom: 1.2rem;
+      }
+      &__desc {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 
 .contact-swiper {
@@ -2536,7 +2770,7 @@ a {
 
   .swiper-slide {
     background-color: $black;
-    height: 56.2em;
+    height: 56.2rem;
   }
   &__step {
     font-size: 3.2rem;
@@ -2796,7 +3030,7 @@ a {
     padding: 1.5rem;
 
     textarea {
-      color: #faf9f7;
+      color: $white;
       width: 100%;
       height: 100%;
       resize: none;
@@ -2806,6 +3040,137 @@ a {
       letter-spacing: -0.01em;
       background: transparent;
       border: none;
+    }
+  }
+
+  @include mq(overDesktop) {
+  }
+  @include mq(desktop) {
+    .swiper-slide {
+      height: auto;
+    }
+
+    &__step {
+      font-size: 1.6rem;
+    }
+
+    &__heading {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      letter-spacing: -0.01em;
+      margin: 0.8rem 0 2rem 0;
+    }
+
+    &__button-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      row-gap: 0.7rem;
+      column-gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .contact-radio-wrap {
+      height: 4.2rem;
+      font-size: 1.4rem;
+    }
+
+    &__button {
+      height: 4.2rem;
+      font-size: 1.2rem;
+    }
+
+    &__form-row {
+      height: 4.6rem;
+    }
+
+    &__input {
+      font-size: 1.4rem;
+    }
+
+    &__checked {
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 1.2rem;
+
+      .custom__checkbox-wrap {
+        margin-left: auto;
+
+        label {
+          font-size: 1.2rem;
+        }
+
+        label:before {
+          width: 1.8rem;
+          height: 1.8rem;
+          background-size: 1.8rem 1.8rem;
+          margin-right: 0.4rem;
+        }
+
+        input:checked + label::before {
+          background-size: 1.8rem 1.8rem;
+        }
+      }
+
+      .file-form-group {
+        &.active {
+          flex-direction: column;
+          align-items: flex-start;
+
+          .file-size__caution {
+            margin-left: 0;
+            margin-top: 1.2rem;
+          }
+        }
+      }
+      .custom__file-wrap {
+        .sm-input-file {
+          width: 9rem;
+          height: 3.4rem;
+        }
+        .for-sm-input-file {
+          width: 9rem;
+          height: 3.4rem;
+          font-size: 1.4rem;
+          &::before {
+            width: 1.1rem;
+            height: 1.1rem;
+            background-size: 1.1rem 1.1rem;
+          }
+
+          &:hover {
+            &::before {
+              background-size: 1.1rem 1.1rem;
+            }
+          }
+        }
+
+        .js-file-name {
+          em {
+            font-size: 1.2rem;
+          }
+        }
+
+        .js-delete-file {
+          margin-left: 0.4rem;
+          height: 1.6rem;
+          width: 1.6rem;
+          background-size: 1.6rem 1.6rem;
+        }
+      }
+
+      .file-size__caution {
+        font-size: 1.2rem;
+        margin-left: 1.2rem;
+      }
+    }
+
+    .textarea--inner {
+      height: 17rem;
+
+      textarea {
+        font-size: 1.4rem;
+        line-height: 1.96rem;
+      }
     }
   }
 }

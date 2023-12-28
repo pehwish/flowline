@@ -33,6 +33,8 @@ const preLoadImg = images => {
   });
 };
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
+
 async function init() {
   gsap.registerPlugin(ScrollTrigger);
   await preLoadImg([
@@ -56,6 +58,12 @@ async function init() {
 
   const flowline = sessionStorage.getItem('flowline');
   const main = document.querySelector('.main').dataset.type;
+  const root = document.getElementsByTagName('html')[0];
+  if (isMobile) {
+    root.classList.add('is-mobile');
+  } else {
+    root.classList.remove('is-mobile');
+  }
 
   switch (main) {
     case 'work':
@@ -83,6 +91,12 @@ async function init() {
 }
 
 function cursorAnimation() {
+  const onMouseDown = () => cursor.classList.add('clicked');
+  const onMouseUp = () => cursor.classList.remove('clicked');
+  const onMouseEnter = () => cursor.classList.remove('hidden');
+  const onMouseLeave = () => cursor.classList.add('hidden');
+  const onHoverOver = () => cursor.classList.add('hover');
+  const onHoverLeave = () => cursor.classList.remove('hover');
   const cursor = document.createElement('div');
   cursor.className = 'cursor';
 
@@ -90,25 +104,36 @@ function cursorAnimation() {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   };
-  const onMouseDown = () => cursor.classList.add('clicked');
-  const onMouseUp = () => cursor.classList.remove('clicked');
-  const onMouseEnter = () => cursor.classList.remove('hidden');
-  const onMouseLeave = () => cursor.classList.add('hidden');
-  const onHoverOver = () => cursor.classList.add('hover');
-  const onHoverLeave = () => cursor.classList.remove('hover');
 
-  document.addEventListener('mousemove', onMouseMove);
-  document.addEventListener('mousedown', onMouseDown);
-  document.addEventListener('mouseup', onMouseUp);
-  document.querySelector('body').addEventListener('mouseenter', onMouseEnter);
-  document.querySelector('body').addEventListener('mouseleave', onMouseLeave);
+  if (!isMobile) {
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('mouseup', onMouseUp);
+    document.querySelector('body').addEventListener('mouseenter', onMouseEnter);
+    document.querySelector('body').addEventListener('mouseleave', onMouseLeave);
 
-  document.querySelector('body').appendChild(cursor);
+    document.querySelector('body').appendChild(cursor);
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseover', onHoverOver);
-    el.addEventListener('mouseout', onHoverLeave);
-  });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseover', onHoverOver);
+      el.addEventListener('mouseout', onHoverLeave);
+    });
+  } else {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mousedown', onMouseDown);
+    document.removeEventListener('mouseup', onMouseUp);
+    document
+      .querySelector('body')
+      .removeEventListener('mouseenter', onMouseEnter);
+    document
+      .querySelector('body')
+      .removeEventListener('mouseleave', onMouseLeave);
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.removeEventListener('mouseover', onHoverOver);
+      el.removeEventListener('mouseout', onHoverLeave);
+    });
+  }
 }
 
 function headerAction() {
@@ -410,6 +435,7 @@ function contactPage() {
   const fileInput = document.querySelector('#js-file');
   const filename = document.querySelector('.js-file-name');
   const fileWrap = document.querySelector('.file-form-group');
+
   const nextBtn = document.querySelector('.contact-swiper__button-next');
   const requestBtn = document.querySelector('.contact-swiper__button-request');
   const finishSlide = document.querySelector('.contact-finish-slide');
@@ -442,6 +468,7 @@ function contactPage() {
     onlyExternal: true,
     noSwiping: true,
     allowTouchMove: false,
+    autoHeight: true,
     navigation: {
       nextEl: '.contact-swiper__button-next',
       prevEl: '.contact-swiper__button-prev'
@@ -455,6 +482,11 @@ function contactPage() {
           nextBtn.style.display = 'block';
           requestBtn.style.display = 'none';
         }
+      }
+    },
+    breakpoints: {
+      1280: {
+        autoHeight: false
       }
     }
   });
@@ -703,7 +735,17 @@ function aboutPage() {
   }
 
   // intro animation
-  var aboutTl = gsap.timeline({});
+  var aboutTl = gsap.timeline({
+    onComplete: function () {
+      if (about.classList.contains('brown')) {
+        document.documentElement.style.setProperty(
+          '--theme-background-color',
+          $black
+        );
+        about.classList.remove('brown');
+      }
+    }
+  });
 
   aboutTl
     .fromTo(
@@ -711,7 +753,7 @@ function aboutPage() {
       0.4,
       {
         ease: Power1.easeOut,
-        x: -930
+        x: -1500
       },
       {
         ease: Power1.easeOut,
@@ -732,20 +774,14 @@ function aboutPage() {
     .fromTo(
       '.about__heading-3',
       0.6,
-      { ease: Power1.easeOut, x: 1100 },
+      { ease: Power1.easeOut, x: 1500 },
       {
         ease: Power1.easeOut,
         x: 0
       },
       0.8
     )
-    .add(() => {
-      document.documentElement.style.setProperty(
-        '--theme-background-color',
-        $black
-      );
-      about.classList.remove('brown');
-    }, 2);
+    .add(() => {}, 2);
 
   //text line
   for (let line of typoHeadingLine) {
@@ -772,7 +808,7 @@ function aboutPage() {
   // principle
   const principleTl = gsap.timeline({
     scrollTrigger: {
-      trigger: '.principle__images',
+      trigger: '.principle__list',
       start: 'top center',
       end: 'bottom center'
     }

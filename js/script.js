@@ -463,6 +463,7 @@ function contactPage() {
 
   const contactSwiper = document.querySelector('.contact-swiper');
   const control = document.querySelector('.contact__control');
+  const contact = document.querySelector('.contact');
 
   const fileInput = document.querySelector('#js-file');
   const filename = document.querySelector('.js-file-name');
@@ -514,6 +515,12 @@ function contactPage() {
           nextBtn.style.display = 'block';
           requestBtn.style.display = 'none';
         }
+
+        if (index.snapIndex === 3 || index.snapIndex === 4) {
+          contact.classList.add('m-height');
+        } else {
+          contact.classList.remove('m-height');
+        }
       }
     },
     breakpoints: {
@@ -529,6 +536,7 @@ function contactPage() {
     contactSwiper.style.display = 'none';
     control.style.display = 'none';
     finishSlide.style.display = 'block';
+    contact.classList.remove('m-height');
   }
 
   //전송 버튼

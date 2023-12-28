@@ -984,7 +984,7 @@ input[type='submit'] {
     }
   }
 
-  @include mq(desktop) {
+  @include mq(underDesktop) {
     &__title {
       margin-top: 18.46vw;
       font-size: 3.07vw;
@@ -1493,9 +1493,113 @@ input[type='submit'] {
     }
   }
 
-  @include mq(overDesktop) {
+  @include mq(1600px) {
+    &__heading {
+      font-size: 8.4rem;
+      line-height: 1.09;
+    }
+
+    &__test-align {
+      margin: 0 20rem 0 24rem;
+    }
+    &__text01 {
+      max-width: 47%;
+    }
+    &__text02 {
+      max-width: 48%;
+    }
   }
+
   @include mq(desktop) {
+    &__heading {
+      font-size: 7.6rem;
+    }
+    &__desc {
+      font-size: 1.8rem;
+    }
+    &__text-wrap__heading {
+      font-size: 2.8rem;
+    }
+    &__text-wrap__desc {
+      font-size: 1.5rem;
+    }
+    &__test-align {
+      margin: 0 18rem 0 22rem;
+    }
+    &__text01 {
+      max-width: 46%;
+    }
+    &__text02 {
+      max-width: 47%;
+    }
+  }
+
+  @include mq(underDesktop) {
+    background-image: none;
+
+    &.black {
+      background-image: none;
+      .about_us__text01 {
+        background-image: url('#{$imageSrc}/home_bg4-black.svg');
+      }
+    }
+
+    &::after {
+      content: none;
+    }
+    &__heading {
+      margin-top: 1.2rem;
+      font-size: 4rem;
+      line-height: 4.32rem;
+    }
+    &__desc {
+      margin-top: 2.4rem;
+      line-height: 2.31rem;
+      margin-bottom: 2.8rem;
+      font-size: 1.4rem;
+    }
+    &__text-wrap__heading {
+      font-size: 1.8rem;
+      line-height: 1.98rem;
+      margin-bottom: 1.2rem;
+    }
+    &__text-wrap__desc {
+      font-size: 1.2rem;
+      line-height: 1.92rem;
+    }
+    &__text01,
+    &__text02 {
+      br {
+        display: block;
+      }
+    }
+
+    &__test-align {
+      display: flex;
+      // flex-direction: column;
+      margin: 0 -2rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    &__text01 {
+      max-width: 100%;
+      background: transparent url('#{$imageSrc}/home_bg4.svg') no-repeat bottom
+        left;
+      background-size: auto 21.8rem;
+      height: 21.8rem;
+      padding: 0 2.2rem 0 14.8rem;
+    }
+    &__text02 {
+      margin-top: 2rem;
+      max-width: 100%;
+      height: 29.7rem;
+      padding: 0 10.7rem 0 2.8rem;
+      background: url('#{$imageSrc}/home_bg5.svg') no-repeat bottom right;
+      background-size: auto 12.3rem;
+    }
+  }
+  @include mq(tablet) {
     &__title {
       height: 5.64vw;
       margin-top: 5.12vw;
@@ -1558,18 +1662,6 @@ input[type='submit'] {
       background-size: 10.25vw auto;
     }
 
-    background-image: none;
-
-    &.black {
-      background-image: none;
-      .about_us__text01 {
-        background-image: url('#{$imageSrc}/home_bg4-black.svg');
-      }
-    }
-
-    &::after {
-      content: none;
-    }
     &__test-align {
       display: flex;
       flex-direction: column;
@@ -1643,9 +1735,6 @@ input[type='submit'] {
       line-height: 1.92rem;
     }
 
-    &__test-align {
-      margin: 0 24rem 0 27rem;
-    }
     &__text01,
     &__text02 {
       br {
@@ -3239,12 +3328,18 @@ input[type='submit'] {
   }
 
   @include mq(desktop) {
+    &.m-height {
+      .contact__aligner {
+        min-height: 84.1rem;
+      }
+    }
     &__aligner {
       align-items: flex-start;
       flex-direction: column;
       height: auto;
-      min-height: calc(100vh - 5.5rem - 15rem);
+      min-height: calc(100vh - 5.5rem);
       justify-content: flex-start;
+      position: relative;
     }
     &__left {
       display: block;
@@ -3320,6 +3415,7 @@ input[type='submit'] {
     }
 
     &-finish-slide {
+      height: auto;
       &__thx {
         font-size: 1.6rem;
         margin-bottom: 0.8rem;

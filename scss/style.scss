@@ -164,13 +164,24 @@ button {
   box-sizing: border-box;
 }
 
+a[href^='tel'] {
+  text-decoration: inherit;
+  color: inherit;
+}
+
 input,
 textarea,
 button,
 a {
   outline: none;
 }
-
+textarea,
+input[type='text'],
+input[type='button'],
+input[type='submit'] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
 .mobile_off {
   display: block;
 }
@@ -451,6 +462,10 @@ a {
     }
   }
   @include mq(underDesktop) {
+    .header_bg {
+      background-size: 100% auto;
+      background-position: center center;
+    }
     .header_bg,
     .header_bg-1 {
       background-image: url('#{$imageSrc}/m_header_bg1.jpg');
@@ -3776,5 +3791,13 @@ html.is-mobile {
     &.hidden {
       display: none;
     }
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
   }
 }

@@ -142,7 +142,23 @@ function headerAction() {
   const headerBg = header.querySelector('.header_bg');
 
   headerBtn.addEventListener('click', function () {
-    toggleClass(header, 'header--open');
+    if (header.classList.contains('header--open')) {
+      header.classList.remove('header--open');
+      document.body.style.overflow = 'auto';
+    } else {
+      header.classList.remove('header--black');
+      header.classList.add('header--open');
+      document.body.style.overflow = 'hidden';
+
+      document.documentElement.style.setProperty(
+        '--theme-background-color',
+        $black
+      );
+      document.documentElement.style.setProperty(
+        '--theme-convert-color',
+        $white
+      );
+    }
   });
 
   const navigationLinks = document.querySelectorAll('.navigation__link');
@@ -150,6 +166,16 @@ function headerAction() {
   navigationLinks.forEach((item, index) => {
     item.addEventListener('mouseenter', e => {
       item.classList.add('navigation__link--active');
+
+      if (index === 1) {
+        header.classList.add('header--black');
+      }
+      headerBg.classList.add(`header_bg-${index + 1}`);
+    });
+
+    item.addEventListener('touchenter', e => {
+      item.classList.add('navigation__link--active');
+
       if (index === 1) {
         header.classList.add('header--black');
       }
@@ -157,6 +183,12 @@ function headerAction() {
     });
 
     item.addEventListener('mouseleave', e => {
+      item.classList.remove('navigation__link--active');
+      header.classList.remove('header--black');
+      headerBg.className = 'header_bg';
+    });
+
+    item.addEventListener('touchleave', e => {
       item.classList.remove('navigation__link--active');
       header.classList.remove('header--black');
       headerBg.className = 'header_bg';

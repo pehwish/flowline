@@ -598,12 +598,12 @@ function pageTransition() {
     .to('.page-transition__flowline', {
       autoAlpha: 1,
       display: 'block'
+    })
+    .to('.page-transition', {
+      autoAlpha: 0,
+      display: 'none',
+      delay: 1
     });
-  // .to('.page-transition', {
-  //   autoAlpha: 0,
-  //   display: 'none',
-  //   delay: 1
-  // });
 }
 function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);

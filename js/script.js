@@ -51,9 +51,8 @@ async function init() {
     '/flowline/assets/main_portfolio_09.jpg',
     '/flowline/assets/main_portfolio_10.jpg',
     '/flowline/assets/page-transition__bg.png',
-    '/flowline/assets/about_img01.png',
-    '/flowline/assets/about_img02.png',
-    '/flowline/assets/about_img03.png'
+    '/flowline/assets/about_img.png',
+    '/flowline/assets/m_about_img.png'
   ]);
 
   const flowline = sessionStorage.getItem('flowline');
@@ -268,7 +267,7 @@ function workPage() {
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const swiperNavs = document.querySelectorAll('.work__nav-button');
   const swiperNav = document.querySelector('.work__nav');
-  let swiper;
+  let swiper = undefined;
   swiperWrapper.innerHTML = createWorkSlide(works, true);
   let scrollNum = 0;
 
@@ -314,7 +313,9 @@ function workPage() {
     );
 
   const resizeSwiper = () => {
-    if (window.innerWidth >= device.desktop && !swiper) {
+    if (window.innerWidth >= device.desktop) {
+      console.log('window.innerWidth >= device.desktop');
+      if (swiper) swiper.destroy();
       swiper = new Swiper('#workSwiper', {
         slidesPerView: 'auto',
         spaceBetween: 0,
@@ -325,11 +326,16 @@ function workPage() {
         loopedSlides: 1,
         direction: 'horizontal',
         speed: 600,
-        parallax: true
+        parallax: true,
+        forceToAxis: false,
+        sensitivity: 1
       });
-    } else if (window.innerWidth < device.desktop && swiper) {
-      swiper.destroy();
-      swiper = null;
+    } else {
+      console.log('window.innerWidth < device.desktop');
+
+      console.log(swiper);
+      if (swiper) swiper.destroy();
+      swiper = undefined;
     }
   };
 
@@ -340,20 +346,24 @@ function workPage() {
   const updateWorkSlide = (filter = '') => {
     let newWorks;
     if (filter === '') {
-      newWorks = works;
+      newWorks = [...works];
     } else {
       newWorks = works.filter(work => work.type.includes(filter));
     }
 
     swiperWrapper.innerHTML = createWorkSlide(newWorks, filter === '', filter);
 
-    if (window.innerWidth >= device.desktop && !swiper) {
-      swiper.updateSize();
-      swiper.updateSlides();
-      swiper.updateSlidesClasses();
-      swiper.slideTo(0);
-      swiper.update();
-    } else if (window.innerWidth < device.desktop) {
+    if (window.innerWidth >= device.desktop) {
+      if (swiper) {
+        swiper.updateSize();
+        swiper.updateSlides();
+        swiper.updateSlidesClasses();
+        swiper.slideTo(0);
+        swiper.update();
+      } else {
+        resizeSwiper();
+      }
+    } else {
       if (filter !== '') {
         swiperNav.classList.add('work__nav--fixed');
         workSwiper.classList.add('work-swiper--fixed');
@@ -588,12 +598,12 @@ function pageTransition() {
     .to('.page-transition__flowline', {
       autoAlpha: 1,
       display: 'block'
-    })
-    .to('.page-transition', {
-      autoAlpha: 0,
-      display: 'none',
-      delay: 1
     });
+  // .to('.page-transition', {
+  //   autoAlpha: 0,
+  //   display: 'none',
+  //   delay: 1
+  // });
 }
 function getRandom(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -792,7 +802,8 @@ function aboutPage() {
       0.4,
       {
         ease: Power1.easeOut,
-        x: -1500
+        x: -1500,
+        opacity: 1
       },
       {
         ease: Power1.easeOut,
@@ -803,7 +814,7 @@ function aboutPage() {
     .fromTo(
       '.about__heading-2',
       0.6,
-      { ease: Power1.easeOut, x: 900 },
+      { ease: Power1.easeOut, x: 900, opacity: 1 },
       {
         ease: Power1.easeOut,
         x: 0
@@ -813,7 +824,7 @@ function aboutPage() {
     .fromTo(
       '.about__heading-3',
       0.6,
-      { ease: Power1.easeOut, x: 1500 },
+      { ease: Power1.easeOut, x: 1500, opacity: 1 },
       {
         ease: Power1.easeOut,
         x: 0

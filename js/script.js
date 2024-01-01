@@ -550,7 +550,6 @@ function pageTransition() {
   var pageTl = gsap.timeline({
     onComplete: function () {
       document.body.style.overflow = 'auto';
-
       mainPage();
     }
   });

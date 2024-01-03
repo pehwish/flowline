@@ -33,7 +33,10 @@ const preLoadImg = images => {
   });
 };
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
+let isMobile =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+    navigator.userAgent
+  );
 
 async function init() {
   gsap.registerPlugin(ScrollTrigger);
@@ -52,26 +55,34 @@ async function init() {
     '/flowline/assets/main_portfolio_10.jpg',
     '/flowline/assets/page-transition__bg.png',
     '/flowline/assets/about_img.png',
-    '/flowline/assets/m_about_img.png'
+    '/flowline/assets/m_about_img.png',
+    '/flowline/assets/header_bg1.jpg',
+    '/flowline/assets/header_bg2.jpg',
+    '/flowline/assets/header_bg3.jpg'
   ]);
 
   const flowline = sessionStorage.getItem('flowline');
   const main = document.querySelector('.main').dataset.type;
   const root = document.getElementsByTagName('html')[0];
   if (isMobile) {
+    root.classList.remove('is-pc');
     root.classList.add('is-mobile');
   } else {
+    root.classList.add('is-pc');
     root.classList.remove('is-mobile');
   }
 
   switch (main) {
     case 'work':
+      await wrapLoad();
       workPage();
       break;
     case 'contact':
+      await wrapLoad();
       contactPage();
       break;
     case 'about':
+      await wrapLoad();
       aboutPage();
       break;
     case 'main':
@@ -82,11 +93,17 @@ async function init() {
   }
   if (!flowline) {
     sessionStorage.setItem('flowline', true);
+    document.getElementById('myVideo').play();
     pageTransition();
   }
 
   cursorAnimation();
   headerAction();
+}
+
+function wrapLoad() {
+  const wrap = document.getElementById('wrap');
+  wrap.style.display = 'block';
 }
 
 function cursorAnimation() {
@@ -636,7 +653,8 @@ function textAnimation() {
 }
 
 /* main page */
-function mainPage() {
+async function mainPage() {
+  await wrapLoad();
   // info
   const infoTl = gsap.timeline({
     ScrollTrigger: '.info',
@@ -781,6 +799,7 @@ function aboutPage() {
       $brown
     );
     about.classList.add('brown');
+    header.classList.remove('header--black');
   }
 
   // intro animation
@@ -792,6 +811,7 @@ function aboutPage() {
           $black
         );
         about.classList.remove('brown');
+        header.classList.remove('header--black');
       }
     }
   });
@@ -884,7 +904,7 @@ function aboutPage() {
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: '.principle__list',
-      start: 'bottom 30%',
+      start: 'bottom 50%',
       end: '+=100' // 200px past the start,
     }
   });

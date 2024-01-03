@@ -5,7 +5,7 @@ const works = [
     url: 'https://kiehls-promotion.co.kr/promotion/2210/',
     title: `키엘 샘플링 이벤트 관리 시스템 구축`,
     date: '2023.04',
-    desc1: `키엘 샘플링 이벤트 프로젝트를 관리할 수 있는 시스템으로\n각 백화점별 키엘 매장 관리, 각 매장별 샘플링 수량 관리, 이벤트 현황 모니터링,\n샘플링 수령 현황 통계 등의 기능 구현  `,
+    desc1: `키엘 샘플링 이벤트 프로젝트를 관리할 수 있는 시스템으로 각 백화점별 키엘 매장 관리, 각 매장별 샘플링 수량 관리, 이벤트 현황 모니터링, 샘플링 수령 현황 통계 등의 기능을 구현하였습니다.`,
     desc2: `A system to manage the Kiehl's sampling event project, incorporating features such as department store-specific Kiehl's store management, quantity tracking for each store's sampling, event status monitoring, and statistical analysis of sampling reception status.`,
     image: '/flowline/assets/work_portfolio_01.jpg',
     mobile_image: '/flowline/assets/m_work_portfolio_01.jpg'

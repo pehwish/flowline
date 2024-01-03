@@ -791,6 +791,7 @@ function mainScrollAnimation() {
 function aboutPage() {
   const header = document.querySelector('header');
   const about = document.querySelector('.about');
+  const footer = document.querySelector('footer');
   const typoHeadingLine = document.querySelectorAll('.typo__heading-line');
 
   if (window.scrollY <= about.offsetHeight) {
@@ -800,6 +801,7 @@ function aboutPage() {
     );
     about.classList.add('brown');
     header.classList.remove('header--black');
+    footer.classList.remove('white');
   }
 
   // intro animation
@@ -812,6 +814,7 @@ function aboutPage() {
         );
         about.classList.remove('brown');
         header.classList.remove('header--black');
+        footer.classList.remove('white');
       }
     }
   });
@@ -918,6 +921,7 @@ function aboutPage() {
       );
       document.documentElement.style.setProperty('--theme-text-color', $brown);
       header.classList.add('header--black');
+      footer.classList.add('white');
     })
     .staggerFromTo(
       '.so_its_the_flowline__item',

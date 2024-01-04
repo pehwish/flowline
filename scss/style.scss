@@ -2572,7 +2572,8 @@ input[type='submit'] {
     }
   }
   #{$workSwiper}__text-area {
-    max-width: 36rem;
+    // max-width: 36rem;
+    flex: 1;
     padding-right: 6rem;
   }
   #{$workSwiper}__image-area {

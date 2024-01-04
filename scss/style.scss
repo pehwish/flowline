@@ -3497,12 +3497,14 @@ input[type='submit'] {
     margin-left: auto;
 
     display: none;
+    align-items: center;
 
     em {
       color: $white;
       font-size: 3.2rem;
       font-weight: 800;
-      vertical-align: middle;
+      display: inline-block;
+      line-height: 1;
     }
 
     &::before {
@@ -3512,7 +3514,6 @@ input[type='submit'] {
       height: 4rem;
       margin-right: 0.4rem;
       background: url('#{$imageSrc}/icon_send.svg') center no-repeat;
-      vertical-align: middle;
     }
   }
 

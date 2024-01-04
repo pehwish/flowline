@@ -74,16 +74,16 @@ async function init() {
 
   switch (main) {
     case 'work':
-      await wrapLoad();
-      workPage();
+      wrapLoad(workPage);
+
       break;
     case 'contact':
-      await wrapLoad();
-      contactPage();
+      wrapLoad(contactPage);
+
       break;
     case 'about':
-      await wrapLoad();
-      aboutPage();
+      wrapLoad(aboutPage);
+
       break;
     case 'main':
       if (flowline) mainPage();
@@ -101,9 +101,12 @@ async function init() {
   headerAction();
 }
 
-function wrapLoad() {
+function wrapLoad(fn) {
   const wrap = document.getElementById('wrap');
   wrap.style.display = 'block';
+  if (fn) {
+    fn();
+  }
 }
 
 function cursorAnimation() {

@@ -2073,10 +2073,11 @@ input[type='submit'] {
     color: $brown;
     font-size: 4rem;
     font-weight: 800;
-    line-height: 5.2rem;
+    line-height: 4rem;
     text-decoration: underline;
     text-decoration-color: $brown;
     position: relative;
+    display: block;
     &::after {
       content: '';
       display: inline-block;
@@ -2086,7 +2087,7 @@ input[type='submit'] {
       background-size: contain;
       position: absolute;
       right: -2.9rem;
-      top: 3.5rem;
+      top: 2.3rem;
     }
     &:hover::after {
       z-index: 1101;

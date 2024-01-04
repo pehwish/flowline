@@ -331,7 +331,6 @@ function workPage() {
 
   const resizeSwiper = () => {
     if (window.innerWidth >= device.desktop) {
-      console.log('window.innerWidth >= device.desktop');
       if (swiper) swiper.destroy();
       swiper = new Swiper('#workSwiper', {
         slidesPerView: 'auto',
@@ -339,18 +338,16 @@ function workPage() {
         mousewheel: true,
         observer: true,
         observeParents: true,
+        observeSlideChildren: true,
         loop: true,
         loopedSlides: 1,
         direction: 'horizontal',
         speed: 600,
         parallax: true,
-        forceToAxis: false,
+        forceToAxis: true,
         sensitivity: 1
       });
     } else {
-      console.log('window.innerWidth < device.desktop');
-
-      console.log(swiper);
       if (swiper) swiper.destroy();
       swiper = undefined;
     }
